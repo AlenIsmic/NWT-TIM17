@@ -2,6 +2,7 @@
 
 
 Web katalog knjiga, koji ima osnovne funkcionalnosti:
+
 *Pregled knjige
 	Osnovne info o knjizi (autor, žanr, cover, itd)
 *Pregled Autora
