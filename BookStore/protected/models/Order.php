@@ -7,7 +7,7 @@
  * @property integer $id
  * @property string $date
  * @property integer $user
- * @property integer $price
+ * @property double $price
  *
  * The followings are the available model relations:
  * @property User $user0
@@ -32,7 +32,8 @@ class Order extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('id, date, user, price', 'required'),
-			array('id, user, price', 'numerical', 'integerOnly'=>true),
+			array('id, user', 'numerical', 'integerOnly'=>true),
+			array('price', 'numerical'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, date, user, price', 'safe', 'on'=>'search'),

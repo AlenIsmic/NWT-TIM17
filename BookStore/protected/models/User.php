@@ -7,10 +7,13 @@
  * @property integer $id
  * @property string $name
  * @property string $email
- * @property integer $admin
+ * @property integer $type
+ * @property integer $valid
+ * @property string $password
  *
  * The followings are the available model relations:
  * @property Order[] $orders
+ * @property UserType $type0
  * @property UserBook[] $userBooks
  */
 class User extends CActiveRecord
@@ -31,12 +34,13 @@ class User extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, name, email', 'required'),
-			array('id, admin', 'numerical', 'integerOnly'=>true),
+			array('id, name, email, valid, password', 'required'),
+			array('id, type, valid', 'numerical', 'integerOnly'=>true),
 			array('name, email', 'length', 'max'=>50),
+			array('password', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, email, admin', 'safe', 'on'=>'search'),
+			array('id, name, email, type, valid, password', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -49,6 +53,7 @@ class User extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'orders' => array(self::HAS_MANY, 'Order', 'user'),
+			'type0' => array(self::BELONGS_TO, 'UserType', 'type'),
 			'userBooks' => array(self::HAS_MANY, 'UserBook', 'user'),
 		);
 	}
@@ -62,7 +67,9 @@ class User extends CActiveRecord
 			'id' => 'ID',
 			'name' => 'Name',
 			'email' => 'Email',
-			'admin' => 'Admin',
+			'type' => 'Type',
+			'valid' => 'Valid',
+			'password' => 'Password',
 		);
 	}
 
@@ -87,7 +94,9 @@ class User extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('email',$this->email,true);
-		$criteria->compare('admin',$this->admin);
+		$criteria->compare('type',$this->type);
+		$criteria->compare('valid',$this->valid);
+		$criteria->compare('password',$this->password,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

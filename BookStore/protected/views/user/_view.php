@@ -17,8 +17,16 @@
 	<?php echo CHtml::encode($data->email); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('admin')); ?>:</b>
-	<?php echo CHtml::encode($data->admin); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('type')); ?>:</b>
+	<?php echo CHtml::encode($data->type); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('valid')); ?>:</b>
+	<?php echo CHtml::encode($data->valid); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('password')); ?>:</b>
+	<?php echo CHtml::encode($data->password); ?>
 	<br />
 
 

@@ -8,8 +8,11 @@
  * @property string $content
  * @property integer $user
  * @property integer $rate
- * @property string $type
+ * @property integer $type
  * @property integer $reference
+ *
+ * The followings are the available model relations:
+ * @property ReviewType $type0
  */
 class Review extends CActiveRecord
 {
@@ -30,9 +33,8 @@ class Review extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('id, content, user, type, reference', 'required'),
-			array('id, user, rate, reference', 'numerical', 'integerOnly'=>true),
+			array('id, user, rate, type, reference', 'numerical', 'integerOnly'=>true),
 			array('content', 'length', 'max'=>150),
-			array('type', 'length', 'max'=>45),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, content, user, rate, type, reference', 'safe', 'on'=>'search'),
@@ -47,6 +49,7 @@ class Review extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'type0' => array(self::BELONGS_TO, 'ReviewType', 'type'),
 		);
 	}
 
@@ -87,7 +90,7 @@ class Review extends CActiveRecord
 		$criteria->compare('content',$this->content,true);
 		$criteria->compare('user',$this->user);
 		$criteria->compare('rate',$this->rate);
-		$criteria->compare('type',$this->type,true);
+		$criteria->compare('type',$this->type);
 		$criteria->compare('reference',$this->reference);
 
 		return new CActiveDataProvider($this, array(

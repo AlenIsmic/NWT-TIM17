@@ -38,9 +38,21 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'admin'); ?>
-		<?php echo $form->textField($model,'admin'); ?>
-		<?php echo $form->error($model,'admin'); ?>
+		<?php echo $form->labelEx($model,'type'); ?>
+		<?php echo $form->textField($model,'type'); ?>
+		<?php echo $form->error($model,'type'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'valid'); ?>
+		<?php echo $form->textField($model,'valid'); ?>
+		<?php echo $form->error($model,'valid'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'password'); ?>
+		<?php echo $form->passwordField($model,'password',array('size'=>60,'maxlength'=>100)); ?>
+		<?php echo $form->error($model,'password'); ?>
 	</div>
 
 	<div class="row buttons">

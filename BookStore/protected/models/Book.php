@@ -6,13 +6,14 @@
  * The followings are the available columns in table 'tbl_book':
  * @property integer $id
  * @property string $title
- * @property string $genre
+ * @property integer $genre
  * @property string $cover
  * @property string $summary
  * @property double $price
  * @property integer $available
  *
  * The followings are the available model relations:
+ * @property Genre $genre0
  * @property BookAuthor[] $bookAuthors
  * @property UserBook[] $userBooks
  */
@@ -35,9 +36,9 @@ class Book extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('id, title, price', 'required'),
-			array('id, available', 'numerical', 'integerOnly'=>true),
+			array('id, genre, available', 'numerical', 'integerOnly'=>true),
 			array('price', 'numerical'),
-			array('title, genre', 'length', 'max'=>50),
+			array('title', 'length', 'max'=>50),
 			array('cover', 'length', 'max'=>100),
 			array('summary', 'safe'),
 			// The following rule is used by search().
@@ -54,6 +55,7 @@ class Book extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'genre0' => array(self::BELONGS_TO, 'Genre', 'genre'),
 			'bookAuthors' => array(self::HAS_MANY, 'BookAuthor', 'book'),
 			'userBooks' => array(self::HAS_MANY, 'UserBook', 'book'),
 		);
@@ -95,7 +97,7 @@ class Book extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('title',$this->title,true);
-		$criteria->compare('genre',$this->genre,true);
+		$criteria->compare('genre',$this->genre);
 		$criteria->compare('cover',$this->cover,true);
 		$criteria->compare('summary',$this->summary,true);
 		$criteria->compare('price',$this->price);
