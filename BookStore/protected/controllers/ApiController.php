@@ -89,8 +89,8 @@ class ApiController extends Controller
         {
             // Find respective model
             case 'books':
-                $model = Book::model()->findByPk($_GET['id']);
-                break;
+                $model = Book::model()->findByPk($_GET['id']); 
+               break;
             case 'users':
                 $model = User::model()->findByPk($_GET['id']);
                 break;
