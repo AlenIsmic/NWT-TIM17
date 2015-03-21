@@ -78,10 +78,48 @@ class ApiController extends Controller
         }
     }
 
-    //GET
+        //GET - Alen Ismic
     public function actionView()
     {
+        // Check if id was submitted via GET
+        if(!isset($_GET['id']))
+            $this->_sendResponse(500, 'Error: Parameter <b>id</b> is missing' );
 
+        switch($_GET['model'])
+        {
+            // Find respective model
+            case 'books':
+                $model = Book::model()->findByPk($_GET['id']);
+                break;
+            case 'users':
+                $model = User::model()->findByPk($_GET['id']);
+                break;
+            case 'orders':
+                $model = Order::model()->findByPk($_GET['id']);
+                break;
+            case 'authors':
+                $model = Author::model()->findByPk($_GET['id']);
+                break;
+            case 'reviews':
+                $model = Review::model()->findByPk($_GET['id']);
+                break;
+            case 'booksAuthors':
+                $model = BookAuthor::model()->findByPk($_GET['id']);
+                break;
+            case 'usersBooks':
+                $model = UserBook::model()->findByPk($_GET['id']);
+                break;
+            default:
+                $this->_sendResponse(501, sprintf(
+                    'Mode <b>view</b> is not implemented for model <b>%s</b>',
+                    $_GET['model']) );
+                Yii::app()->end();
+        }
+        // Did we find the requested model? If not, raise an error
+        if(is_null($model))
+            $this->_sendResponse(404, 'No Item found with id '.$_GET['id']);
+        else
+            $this->_sendResponse(200, CJSON::encode($model));
     }
 
     //POST
