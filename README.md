@@ -50,5 +50,5 @@ MODUL 6: Upravljanje prodajom
 	Pretraga narudžbi
 	Pregled narudžbi
 	Ispis narudžbi u .pdf formatu
-	Ocjenjivanje kupca (Feedback kupovine)
+	Feedback kupovine
 	Obračunavanje popusta u skladu sa ratingom kupca
