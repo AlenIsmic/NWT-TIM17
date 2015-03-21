@@ -118,15 +118,12 @@ class ApiController extends Controller
             // send the body
             echo $body;
         }
-        // we need to create the body if none is passed
+        // create the body if none is passed
         else
         {
             // create some body messages
             $message = '';
 
-            // this is purely optional, but makes the pages a little nicer to read
-            // for your users.  Since you won't likely send a lot of different status codes,
-            // this also shouldn't be too ponderous to maintain
             switch($status)
             {
                 case 401:
@@ -143,7 +140,6 @@ class ApiController extends Controller
                     break;
             }
 
-            // servers don't always have a signature turned on
             // (this is an apache directive "ServerSignature On")
             $signature = ($_SERVER['SERVER_SIGNATURE'] == '') ? $_SERVER['SERVER_SOFTWARE'] . ' Server at ' . $_SERVER['SERVER_NAME'] . ' Port ' . $_SERVER['SERVER_PORT'] : $_SERVER['SERVER_SIGNATURE'];
 
@@ -170,9 +166,6 @@ class ApiController extends Controller
 
     private function _getStatusCodeMessage($status)
     {
-        // these could be stored in a .ini file and loaded
-        // via parse_ini_file()... however, this will suffice
-        // for an example
         $codes = Array(
             200 => 'OK',
             400 => 'Bad Request',
