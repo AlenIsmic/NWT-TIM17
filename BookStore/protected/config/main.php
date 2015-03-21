@@ -56,6 +56,22 @@ return array(
 			'errorAction'=>'site/error',
 		),
 
+        'urlManager'=>array(
+            'urlFormat'=>'path',
+            'rules'=>array(
+                'post/<id:\d+>/<title:.*?>'=>'post/view',
+                'posts/<tag:.*?>'=>'post/index',
+                // REST patterns
+                array('api/list', 'pattern'=>'api/<model:\w+>', 'verb'=>'GET'),
+                array('api/view', 'pattern'=>'api/<model:\w+>/<id:\d+>', 'verb'=>'GET'),
+                array('api/update', 'pattern'=>'api/<model:\w+>/<id:\d+>', 'verb'=>'PUT'),
+                array('api/delete', 'pattern'=>'api/<model:\w+>/<id:\d+>', 'verb'=>'DELETE'),
+                array('api/create', 'pattern'=>'api/<model:\w+>', 'verb'=>'POST'),
+                // Other controllers
+                '<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
+            ),
+        ),
+
 		'log'=>array(
 			'class'=>'CLogRouter',
 			'routes'=>array(
@@ -74,10 +90,13 @@ return array(
 
 	),
 
+
+
 	// application-level parameters that can be accessed
 	// using Yii::app()->params['paramName']
 	'params'=>array(
 		// this is used in contact page
 		'adminEmail'=>'webmaster@example.com',
 	),
+
 );

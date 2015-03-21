@@ -48,3 +48,381 @@ REQUEST_URI=/NWT-TIM17/BookStore/index.php
 in C:\wamp\www\NWT-TIM17\BookStore\protected\views\layouts\main.php (51)
 in C:\wamp\www\NWT-TIM17\BookStore\protected\views\layouts\column1.php (6)
 in C:\wamp\www\NWT-TIM17\BookStore\protected\controllers\SiteController.php (32)
+2015/03/20 23:20:48 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in C:\wamp\www\framework\db\CDbConnection.php:399
+Stack trace:
+#0 C:\wamp\www\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 C:\wamp\www\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 C:\wamp\www\framework\base\CModule.php(394): CDbConnection->init()
+#3 C:\wamp\www\framework\base\CApplication.php(458): CModule->getComponent('db')
+#4 C:\wamp\www\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 C:\wamp\www\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 C:\wamp\www\framework\db\ar\CActiveRecord.php(1601): CActiveRecord->getCommandBuilder()
+#7 C:\wamp\www\framework\web\CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#8 C:\wamp\www\framework\web\CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#9 C:\wamp\www\framework\web\CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#10 C:\wamp\www\framework\web\CDataProvider.php(168): CActiveDataProvider->fetchData()
+#11 C:\wamp\www\framework\zii\widgets\CBaseListView.php(125): CDataProvider->getData()
+#12 C:\wamp\www\framework\zii\widgets\CListView.php(211): CBaseListView->init()
+#13 C:\wamp\www\framework\web\CBaseController.php(147): CListView->init()
+#14 C:\wamp\www\framework\web\CBaseController.php(180): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#15 C:\wamp\www\NWT-TIM17\BookStore\protected\views\book\index.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#16 C:\wamp\www\framework\web\CBaseController.php(126): require('C:\\wamp\\www\\NWT...')
+#17 C:\wamp\www\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\wamp\\www\\NWT...', Array, true)
+#18 C:\wamp\www\framework\web\CController.php(869): CBaseController->renderFile('C:\\wamp\\www\\NWT...', Array, true)
+#19 C:\wamp\www\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#20 C:\wamp\www\NWT-TIM17\BookStore\protected\controllers\BookController.php(128): CController->render('index', Array)
+#21 C:\wamp\www\framework\web\actions\CInlineAction.php(49): BookController->actionIndex()
+#22 C:\wamp\www\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#23 C:\wamp\www\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#24 C:\wamp\www\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#25 C:\wamp\www\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#26 C:\wamp\www\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#27 C:\wamp\www\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#28 C:\wamp\www\framework\web\CController.php(291): CFilterChain->run()
+#29 C:\wamp\www\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#30 C:\wamp\www\framework\web\CWebApplication.php(282): CController->run('')
+#31 C:\wamp\www\framework\web\CWebApplication.php(141): CWebApplication->runController('book')
+#32 C:\wamp\www\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#33 C:\wamp\www\NWT-TIM17\BookStore\index.php(13): CApplication->run()
+#34 {main}
+REQUEST_URI=/NWT-TIM17/BookStore/index.php?r=book
+---
+2015/03/20 23:21:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "BookController".' in C:\wamp\www\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\www\framework\web\CWebApplication.php(141): CWebApplication->runController('BookController')
+#1 C:\wamp\www\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\wamp\www\NWT-TIM17\BookStore\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/NWT-TIM17/BookStore/index.php?r=BookController
+---
+2015/03/21 00:04:40 [error] [exception.CException] exception 'CException' with message 'ApiController and its behaviors do not have a method or closure named "_sendResponse".' in C:\wamp\www\framework\base\CComponent.php:266
+Stack trace:
+#0 C:\wamp\www\NWT-TIM17\BookStore\protected\controllers\ApiController.php(57): CComponent->__call('_sendResponse', Array)
+#1 C:\wamp\www\NWT-TIM17\BookStore\protected\controllers\ApiController.php(57): ApiController->_sendResponse(200, '[{"id":"1","tit...')
+#2 C:\wamp\www\framework\web\actions\CInlineAction.php(49): ApiController->actionList()
+#3 C:\wamp\www\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\wamp\www\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#5 C:\wamp\www\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\wamp\www\framework\web\CWebApplication.php(282): CController->run('list')
+#7 C:\wamp\www\framework\web\CWebApplication.php(141): CWebApplication->runController('api/list')
+#8 C:\wamp\www\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#9 C:\wamp\www\NWT-TIM17\BookStore\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/NWT-TIM17/BookStore/index.php/api/posts
+---
+2015/03/21 00:04:43 [error] [exception.CException] exception 'CException' with message 'ApiController and its behaviors do not have a method or closure named "_sendResponse".' in C:\wamp\www\framework\base\CComponent.php:266
+Stack trace:
+#0 C:\wamp\www\NWT-TIM17\BookStore\protected\controllers\ApiController.php(43): CComponent->__call('_sendResponse', Array)
+#1 C:\wamp\www\NWT-TIM17\BookStore\protected\controllers\ApiController.php(43): ApiController->_sendResponse(501, 'Error: Mode <b>...')
+#2 C:\wamp\www\framework\web\actions\CInlineAction.php(49): ApiController->actionList()
+#3 C:\wamp\www\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\wamp\www\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#5 C:\wamp\www\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\wamp\www\framework\web\CWebApplication.php(282): CController->run('list')
+#7 C:\wamp\www\framework\web\CWebApplication.php(141): CWebApplication->runController('api/list')
+#8 C:\wamp\www\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#9 C:\wamp\www\NWT-TIM17\BookStore\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/NWT-TIM17/BookStore/index.php/api/books
+---
+2015/03/21 00:04:49 [error] [exception.CException] exception 'CException' with message 'ApiController and its behaviors do not have a method or closure named "_sendResponse".' in C:\wamp\www\framework\base\CComponent.php:266
+Stack trace:
+#0 C:\wamp\www\NWT-TIM17\BookStore\protected\controllers\ApiController.php(43): CComponent->__call('_sendResponse', Array)
+#1 C:\wamp\www\NWT-TIM17\BookStore\protected\controllers\ApiController.php(43): ApiController->_sendResponse(501, 'Error: Mode <b>...')
+#2 C:\wamp\www\framework\web\actions\CInlineAction.php(49): ApiController->actionList()
+#3 C:\wamp\www\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\wamp\www\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#5 C:\wamp\www\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\wamp\www\framework\web\CWebApplication.php(282): CController->run('list')
+#7 C:\wamp\www\framework\web\CWebApplication.php(141): CWebApplication->runController('api/list')
+#8 C:\wamp\www\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#9 C:\wamp\www\NWT-TIM17\BookStore\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/NWT-TIM17/BookStore/index.php/api/book
+---
+2015/03/21 00:04:58 [error] [exception.CException] exception 'CException' with message 'ApiController and its behaviors do not have a method or closure named "_sendResponse".' in C:\wamp\www\framework\base\CComponent.php:266
+Stack trace:
+#0 C:\wamp\www\NWT-TIM17\BookStore\protected\controllers\ApiController.php(43): CComponent->__call('_sendResponse', Array)
+#1 C:\wamp\www\NWT-TIM17\BookStore\protected\controllers\ApiController.php(43): ApiController->_sendResponse(501, 'Error: Mode <b>...')
+#2 C:\wamp\www\framework\web\actions\CInlineAction.php(49): ApiController->actionList()
+#3 C:\wamp\www\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\wamp\www\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#5 C:\wamp\www\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\wamp\www\framework\web\CWebApplication.php(282): CController->run('list')
+#7 C:\wamp\www\framework\web\CWebApplication.php(141): CWebApplication->runController('api/list')
+#8 C:\wamp\www\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#9 C:\wamp\www\NWT-TIM17\BookStore\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/NWT-TIM17/BookStore/index.php/api/books
+---
+2015/03/21 00:05:50 [error] [exception.CException] exception 'CException' with message 'ApiController and its behaviors do not have a method or closure named "_sendResponse".' in C:\wamp\www\framework\base\CComponent.php:266
+Stack trace:
+#0 C:\wamp\www\NWT-TIM17\BookStore\protected\controllers\ApiController.php(43): CComponent->__call('_sendResponse', Array)
+#1 C:\wamp\www\NWT-TIM17\BookStore\protected\controllers\ApiController.php(43): ApiController->_sendResponse(501, 'Error: Mode <b>...')
+#2 C:\wamp\www\framework\web\actions\CInlineAction.php(49): ApiController->actionList()
+#3 C:\wamp\www\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\wamp\www\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#5 C:\wamp\www\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\wamp\www\framework\web\CWebApplication.php(282): CController->run('list')
+#7 C:\wamp\www\framework\web\CWebApplication.php(141): CWebApplication->runController('api/list')
+#8 C:\wamp\www\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#9 C:\wamp\www\NWT-TIM17\BookStore\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/NWT-TIM17/BookStore/index.php/api/books
+---
+2015/03/21 00:22:50 [error] [php] include(Post.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory (C:\wamp\www\framework\YiiBase.php:432)
+Stack trace:
+#0 C:\wamp\www\NWT-TIM17\BookStore\protected\controllers\ApiController.php(70): spl_autoload_call()
+#1 C:\wamp\www\framework\web\actions\CInlineAction.php(49): ApiController->actionView()
+#2 C:\wamp\www\framework\web\CController.php(308): CInlineAction->runWithParams()
+#3 C:\wamp\www\framework\web\CController.php(286): ApiController->runAction()
+#4 C:\wamp\www\framework\web\CController.php(265): ApiController->runActionWithFilters()
+#5 C:\wamp\www\framework\web\CWebApplication.php(282): ApiController->run()
+#6 C:\wamp\www\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#7 C:\wamp\www\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#8 C:\wamp\www\NWT-TIM17\BookStore\index.php(13): CWebApplication->run()
+REQUEST_URI=/NWT-TIM17/BookStore/index.php/api/books/1
+in C:\wamp\www\NWT-TIM17\BookStore\protected\controllers\ApiController.php (70)
+in C:\wamp\www\NWT-TIM17\BookStore\index.php (13)
+2015/03/21 00:23:37 [error] [php] include(Post.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory (C:\wamp\www\framework\YiiBase.php:432)
+Stack trace:
+#0 C:\wamp\www\NWT-TIM17\BookStore\protected\controllers\ApiController.php(70): spl_autoload_call()
+#1 C:\wamp\www\framework\web\actions\CInlineAction.php(49): ApiController->actionView()
+#2 C:\wamp\www\framework\web\CController.php(308): CInlineAction->runWithParams()
+#3 C:\wamp\www\framework\web\CController.php(286): ApiController->runAction()
+#4 C:\wamp\www\framework\web\CController.php(265): ApiController->runActionWithFilters()
+#5 C:\wamp\www\framework\web\CWebApplication.php(282): ApiController->run()
+#6 C:\wamp\www\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#7 C:\wamp\www\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#8 C:\wamp\www\NWT-TIM17\BookStore\index.php(13): CWebApplication->run()
+REQUEST_URI=/NWT-TIM17/BookStore/index.php/api/books/1
+in C:\wamp\www\NWT-TIM17\BookStore\protected\controllers\ApiController.php (70)
+in C:\wamp\www\NWT-TIM17\BookStore\index.php (13)
+2015/03/21 00:24:43 [error] [php] include(Post.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory (C:\wamp\www\framework\YiiBase.php:432)
+Stack trace:
+#0 C:\wamp\www\NWT-TIM17\BookStore\protected\controllers\ApiController.php(70): spl_autoload_call()
+#1 C:\wamp\www\framework\web\actions\CInlineAction.php(49): ApiController->actionView()
+#2 C:\wamp\www\framework\web\CController.php(308): CInlineAction->runWithParams()
+#3 C:\wamp\www\framework\web\CController.php(286): ApiController->runAction()
+#4 C:\wamp\www\framework\web\CController.php(265): ApiController->runActionWithFilters()
+#5 C:\wamp\www\framework\web\CWebApplication.php(282): ApiController->run()
+#6 C:\wamp\www\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#7 C:\wamp\www\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#8 C:\wamp\www\NWT-TIM17\BookStore\index.php(13): CWebApplication->run()
+REQUEST_URI=/NWT-TIM17/BookStore/index.php/api/books/1
+in C:\wamp\www\NWT-TIM17\BookStore\protected\controllers\ApiController.php (70)
+in C:\wamp\www\NWT-TIM17\BookStore\index.php (13)
+2015/03/21 00:26:03 [error] [php] include(Post.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory (C:\wamp\www\framework\YiiBase.php:432)
+Stack trace:
+#0 C:\wamp\www\NWT-TIM17\BookStore\protected\controllers\ApiController.php(70): spl_autoload_call()
+#1 C:\wamp\www\framework\web\actions\CInlineAction.php(49): ApiController->actionView()
+#2 C:\wamp\www\framework\web\CController.php(308): CInlineAction->runWithParams()
+#3 C:\wamp\www\framework\web\CController.php(286): ApiController->runAction()
+#4 C:\wamp\www\framework\web\CController.php(265): ApiController->runActionWithFilters()
+#5 C:\wamp\www\framework\web\CWebApplication.php(282): ApiController->run()
+#6 C:\wamp\www\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#7 C:\wamp\www\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#8 C:\wamp\www\NWT-TIM17\BookStore\index.php(13): CWebApplication->run()
+REQUEST_URI=/NWT-TIM17/BookStore/index.php/api/books/123
+in C:\wamp\www\NWT-TIM17\BookStore\protected\controllers\ApiController.php (70)
+in C:\wamp\www\NWT-TIM17\BookStore\index.php (13)
+2015/03/21 00:26:55 [error] [php] include(Post.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory (C:\wamp\www\framework\YiiBase.php:432)
+Stack trace:
+#0 C:\wamp\www\NWT-TIM17\BookStore\protected\controllers\ApiController.php(70): spl_autoload_call()
+#1 C:\wamp\www\framework\web\actions\CInlineAction.php(49): ApiController->actionView()
+#2 C:\wamp\www\framework\web\CController.php(308): CInlineAction->runWithParams()
+#3 C:\wamp\www\framework\web\CController.php(286): ApiController->runAction()
+#4 C:\wamp\www\framework\web\CController.php(265): ApiController->runActionWithFilters()
+#5 C:\wamp\www\framework\web\CWebApplication.php(282): ApiController->run()
+#6 C:\wamp\www\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#7 C:\wamp\www\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#8 C:\wamp\www\NWT-TIM17\BookStore\index.php(13): CWebApplication->run()
+REQUEST_URI=/NWT-TIM17/BookStore/index.php/api/books/123
+in C:\wamp\www\NWT-TIM17\BookStore\protected\controllers\ApiController.php (70)
+in C:\wamp\www\NWT-TIM17\BookStore\index.php (13)
+2015/03/21 00:27:49 [error] [php] include(Post.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory (C:\wamp\www\framework\YiiBase.php:432)
+Stack trace:
+#0 C:\wamp\www\NWT-TIM17\BookStore\protected\controllers\ApiController.php(70): spl_autoload_call()
+#1 C:\wamp\www\framework\web\actions\CInlineAction.php(49): ApiController->actionView()
+#2 C:\wamp\www\framework\web\CController.php(308): CInlineAction->runWithParams()
+#3 C:\wamp\www\framework\web\CController.php(286): ApiController->runAction()
+#4 C:\wamp\www\framework\web\CController.php(265): ApiController->runActionWithFilters()
+#5 C:\wamp\www\framework\web\CWebApplication.php(282): ApiController->run()
+#6 C:\wamp\www\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#7 C:\wamp\www\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#8 C:\wamp\www\NWT-TIM17\BookStore\index.php(13): CWebApplication->run()
+REQUEST_URI=/NWT-TIM17/BookStore/index.php/api/books/1
+in C:\wamp\www\NWT-TIM17\BookStore\protected\controllers\ApiController.php (70)
+in C:\wamp\www\NWT-TIM17\BookStore\index.php (13)
+2015/03/21 00:34:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "books".' in C:\wamp\www\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\framework\web\CController.php(270): CController->missingAction('books')
+#1 C:\wamp\www\framework\web\CWebApplication.php(282): CController->run('books')
+#2 C:\wamp\www\framework\web\CWebApplication.php(141): CWebApplication->runController('api/books/1')
+#3 C:\wamp\www\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\wamp\www\NWT-TIM17\BookStore\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/NWT-TIM17/BookStore/index.php/api/books/1
+---
+2015/03/21 01:58:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "usersBooks".' in C:\wamp\www\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\framework\web\CController.php(270): CController->missingAction('usersBooks')
+#1 C:\wamp\www\framework\web\CWebApplication.php(282): CController->run('usersBooks')
+#2 C:\wamp\www\framework\web\CWebApplication.php(141): CWebApplication->runController('api/usersBooks')
+#3 C:\wamp\www\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\wamp\www\NWT-TIM17\BookStore\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/NWT-TIM17/BookStore/index.php/api/usersBooks
+---
+2015/03/21 02:03:47 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`book_store`.`tbl_order`, CONSTRAINT `user` FOREIGN KEY (`user`) REFERENCES `tbl_user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: DELETE FROM `tbl_user` WHERE `tbl_user`.`id`=1.
+in C:\wamp\www\NWT-TIM17\BookStore\protected\controllers\ApiController.php (293)
+in C:\wamp\www\NWT-TIM17\BookStore\index.php (13)
+2015/03/21 02:03:47 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`book_store`.`tbl_order`, CONSTRAINT `user` FOREIGN KEY (`user`) REFERENCES `tbl_user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: DELETE FROM `tbl_user` WHERE `tbl_user`.`id`=1' in C:\wamp\www\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\wamp\www\framework\db\ar\CActiveRecord.php(1807): CDbCommand->execute()
+#1 C:\wamp\www\framework\db\ar\CActiveRecord.php(1227): CActiveRecord->deleteByPk('1')
+#2 C:\wamp\www\NWT-TIM17\BookStore\protected\controllers\ApiController.php(293): CActiveRecord->delete()
+#3 C:\wamp\www\framework\web\actions\CInlineAction.php(49): ApiController->actionDelete()
+#4 C:\wamp\www\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\wamp\www\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\wamp\www\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\wamp\www\framework\web\CWebApplication.php(282): CController->run('delete')
+#8 C:\wamp\www\framework\web\CWebApplication.php(141): CWebApplication->runController('api/delete')
+#9 C:\wamp\www\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\wamp\www\NWT-TIM17\BookStore\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/NWT-TIM17/BookStore/index.php/api/users/1
+---
+2015/03/21 02:04:01 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`book_store`.`tbl_order`, CONSTRAINT `user` FOREIGN KEY (`user`) REFERENCES `tbl_user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: DELETE FROM `tbl_user` WHERE `tbl_user`.`id`=1.
+in C:\wamp\www\NWT-TIM17\BookStore\protected\controllers\ApiController.php (293)
+in C:\wamp\www\NWT-TIM17\BookStore\index.php (13)
+2015/03/21 02:04:01 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`book_store`.`tbl_order`, CONSTRAINT `user` FOREIGN KEY (`user`) REFERENCES `tbl_user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: DELETE FROM `tbl_user` WHERE `tbl_user`.`id`=1' in C:\wamp\www\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\wamp\www\framework\db\ar\CActiveRecord.php(1807): CDbCommand->execute()
+#1 C:\wamp\www\framework\db\ar\CActiveRecord.php(1227): CActiveRecord->deleteByPk('1')
+#2 C:\wamp\www\NWT-TIM17\BookStore\protected\controllers\ApiController.php(293): CActiveRecord->delete()
+#3 C:\wamp\www\framework\web\actions\CInlineAction.php(49): ApiController->actionDelete()
+#4 C:\wamp\www\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\wamp\www\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\wamp\www\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\wamp\www\framework\web\CWebApplication.php(282): CController->run('delete')
+#8 C:\wamp\www\framework\web\CWebApplication.php(141): CWebApplication->runController('api/delete')
+#9 C:\wamp\www\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\wamp\www\NWT-TIM17\BookStore\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/NWT-TIM17/BookStore/index.php/api/users/1
+---
+2015/03/21 02:05:05 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`book_store`.`tbl_order`, CONSTRAINT `user` FOREIGN KEY (`user`) REFERENCES `tbl_user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: DELETE FROM `tbl_user` WHERE `tbl_user`.`id`=2.
+in C:\wamp\www\NWT-TIM17\BookStore\protected\controllers\ApiController.php (293)
+in C:\wamp\www\NWT-TIM17\BookStore\index.php (13)
+2015/03/21 02:05:05 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`book_store`.`tbl_order`, CONSTRAINT `user` FOREIGN KEY (`user`) REFERENCES `tbl_user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: DELETE FROM `tbl_user` WHERE `tbl_user`.`id`=2' in C:\wamp\www\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\wamp\www\framework\db\ar\CActiveRecord.php(1807): CDbCommand->execute()
+#1 C:\wamp\www\framework\db\ar\CActiveRecord.php(1227): CActiveRecord->deleteByPk('2')
+#2 C:\wamp\www\NWT-TIM17\BookStore\protected\controllers\ApiController.php(293): CActiveRecord->delete()
+#3 C:\wamp\www\framework\web\actions\CInlineAction.php(49): ApiController->actionDelete()
+#4 C:\wamp\www\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\wamp\www\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\wamp\www\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\wamp\www\framework\web\CWebApplication.php(282): CController->run('delete')
+#8 C:\wamp\www\framework\web\CWebApplication.php(141): CWebApplication->runController('api/delete')
+#9 C:\wamp\www\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\wamp\www\NWT-TIM17\BookStore\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/NWT-TIM17/BookStore/index.php/api/users/2
+---
+2015/03/21 02:05:24 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`book_store`.`tbl_user_book`, CONSTRAINT `book2` FOREIGN KEY (`book`) REFERENCES `tbl_book` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: DELETE FROM `tbl_book` WHERE `tbl_book`.`id`=2.
+in C:\wamp\www\NWT-TIM17\BookStore\protected\controllers\ApiController.php (293)
+in C:\wamp\www\NWT-TIM17\BookStore\index.php (13)
+2015/03/21 02:05:24 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`book_store`.`tbl_user_book`, CONSTRAINT `book2` FOREIGN KEY (`book`) REFERENCES `tbl_book` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: DELETE FROM `tbl_book` WHERE `tbl_book`.`id`=2' in C:\wamp\www\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\wamp\www\framework\db\ar\CActiveRecord.php(1807): CDbCommand->execute()
+#1 C:\wamp\www\framework\db\ar\CActiveRecord.php(1227): CActiveRecord->deleteByPk('2')
+#2 C:\wamp\www\NWT-TIM17\BookStore\protected\controllers\ApiController.php(293): CActiveRecord->delete()
+#3 C:\wamp\www\framework\web\actions\CInlineAction.php(49): ApiController->actionDelete()
+#4 C:\wamp\www\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\wamp\www\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\wamp\www\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\wamp\www\framework\web\CWebApplication.php(282): CController->run('delete')
+#8 C:\wamp\www\framework\web\CWebApplication.php(141): CWebApplication->runController('api/delete')
+#9 C:\wamp\www\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\wamp\www\NWT-TIM17\BookStore\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/NWT-TIM17/BookStore/index.php/api/books/2
+---
+2015/03/21 02:05:30 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`book_store`.`tbl_book_author`, CONSTRAINT `book` FOREIGN KEY (`book`) REFERENCES `tbl_book` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: DELETE FROM `tbl_book` WHERE `tbl_book`.`id`=1.
+in C:\wamp\www\NWT-TIM17\BookStore\protected\controllers\ApiController.php (293)
+in C:\wamp\www\NWT-TIM17\BookStore\index.php (13)
+2015/03/21 02:05:30 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`book_store`.`tbl_book_author`, CONSTRAINT `book` FOREIGN KEY (`book`) REFERENCES `tbl_book` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: DELETE FROM `tbl_book` WHERE `tbl_book`.`id`=1' in C:\wamp\www\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\wamp\www\framework\db\ar\CActiveRecord.php(1807): CDbCommand->execute()
+#1 C:\wamp\www\framework\db\ar\CActiveRecord.php(1227): CActiveRecord->deleteByPk('1')
+#2 C:\wamp\www\NWT-TIM17\BookStore\protected\controllers\ApiController.php(293): CActiveRecord->delete()
+#3 C:\wamp\www\framework\web\actions\CInlineAction.php(49): ApiController->actionDelete()
+#4 C:\wamp\www\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\wamp\www\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\wamp\www\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\wamp\www\framework\web\CWebApplication.php(282): CController->run('delete')
+#8 C:\wamp\www\framework\web\CWebApplication.php(141): CWebApplication->runController('api/delete')
+#9 C:\wamp\www\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\wamp\www\NWT-TIM17\BookStore\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/NWT-TIM17/BookStore/index.php/api/books/1
+---
+2015/03/21 02:06:24 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`book_store`.`tbl_book_author`, CONSTRAINT `book` FOREIGN KEY (`book`) REFERENCES `tbl_book` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: DELETE FROM `tbl_book` WHERE `tbl_book`.`id`=1.
+in C:\wamp\www\NWT-TIM17\BookStore\protected\controllers\ApiController.php (293)
+in C:\wamp\www\NWT-TIM17\BookStore\index.php (13)
+2015/03/21 02:06:24 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`book_store`.`tbl_book_author`, CONSTRAINT `book` FOREIGN KEY (`book`) REFERENCES `tbl_book` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: DELETE FROM `tbl_book` WHERE `tbl_book`.`id`=1' in C:\wamp\www\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\wamp\www\framework\db\ar\CActiveRecord.php(1807): CDbCommand->execute()
+#1 C:\wamp\www\framework\db\ar\CActiveRecord.php(1227): CActiveRecord->deleteByPk('1')
+#2 C:\wamp\www\NWT-TIM17\BookStore\protected\controllers\ApiController.php(293): CActiveRecord->delete()
+#3 C:\wamp\www\framework\web\actions\CInlineAction.php(49): ApiController->actionDelete()
+#4 C:\wamp\www\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\wamp\www\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\wamp\www\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\wamp\www\framework\web\CWebApplication.php(282): CController->run('delete')
+#8 C:\wamp\www\framework\web\CWebApplication.php(141): CWebApplication->runController('api/delete')
+#9 C:\wamp\www\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\wamp\www\NWT-TIM17\BookStore\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/NWT-TIM17/BookStore/index.php/api/books/1
+---
+2015/03/21 02:07:46 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`book_store`.`tbl_book_author`, CONSTRAINT `book` FOREIGN KEY (`book`) REFERENCES `tbl_book` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: DELETE FROM `tbl_book` WHERE `tbl_book`.`id`=1.
+in C:\wamp\www\NWT-TIM17\BookStore\protected\controllers\ApiController.php (293)
+in C:\wamp\www\NWT-TIM17\BookStore\index.php (13)
+2015/03/21 02:07:46 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`book_store`.`tbl_book_author`, CONSTRAINT `book` FOREIGN KEY (`book`) REFERENCES `tbl_book` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: DELETE FROM `tbl_book` WHERE `tbl_book`.`id`=1' in C:\wamp\www\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\wamp\www\framework\db\ar\CActiveRecord.php(1807): CDbCommand->execute()
+#1 C:\wamp\www\framework\db\ar\CActiveRecord.php(1227): CActiveRecord->deleteByPk('1')
+#2 C:\wamp\www\NWT-TIM17\BookStore\protected\controllers\ApiController.php(293): CActiveRecord->delete()
+#3 C:\wamp\www\framework\web\actions\CInlineAction.php(49): ApiController->actionDelete()
+#4 C:\wamp\www\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\wamp\www\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\wamp\www\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\wamp\www\framework\web\CWebApplication.php(282): CController->run('delete')
+#8 C:\wamp\www\framework\web\CWebApplication.php(141): CWebApplication->runController('api/delete')
+#9 C:\wamp\www\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\wamp\www\NWT-TIM17\BookStore\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/NWT-TIM17/BookStore/index.php/api/books/1
+---
+2015/03/21 02:13:55 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '1' for key 'email_UNIQUE'. The SQL statement executed was: INSERT INTO `tbl_order` (`id`, `date`, `user`, `price`) VALUES (:yp0, :yp1, :yp2, :yp3).
+in C:\wamp\www\NWT-TIM17\BookStore\protected\controllers\ApiController.php (169)
+in C:\wamp\www\NWT-TIM17\BookStore\index.php (13)
+2015/03/21 02:13:55 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '1' for key 'email_UNIQUE'. The SQL statement executed was: INSERT INTO `tbl_order` (`id`, `date`, `user`, `price`) VALUES (:yp0, :yp1, :yp2, :yp3)' in C:\wamp\www\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\wamp\www\framework\db\ar\CActiveRecord.php(1080): CDbCommand->execute()
+#1 C:\wamp\www\framework\db\ar\CActiveRecord.php(809): CActiveRecord->insert(NULL)
+#2 C:\wamp\www\NWT-TIM17\BookStore\protected\controllers\ApiController.php(169): CActiveRecord->save()
+#3 C:\wamp\www\framework\web\actions\CInlineAction.php(49): ApiController->actionCreate()
+#4 C:\wamp\www\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\wamp\www\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\wamp\www\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\wamp\www\framework\web\CWebApplication.php(282): CController->run('create')
+#8 C:\wamp\www\framework\web\CWebApplication.php(141): CWebApplication->runController('api/create')
+#9 C:\wamp\www\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\wamp\www\NWT-TIM17\BookStore\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/NWT-TIM17/BookStore/index.php/api/orders
+---
