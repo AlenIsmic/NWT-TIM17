@@ -1,0 +1,8 @@
+METHODS:
+
+GET ALL http://localhost/index.php/api/books
+GET http://localhost/NWT-TIM17/BookStore/index.php/api/books/<ID>
+POST http://localhost/NWT-TIM17/BookStore/index.php/api/books
+PUT http://localhost/NWT-TIM17/BookStore/index.php/api/books/<ID>
+DELETE http://localhost/NWT-TIM17/BookStore/index.php/api/books/<ID>
+
