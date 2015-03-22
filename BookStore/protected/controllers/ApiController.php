@@ -191,10 +191,53 @@ class ApiController extends Controller
 
     }
 
-    //DELETE
+    //DELETE - Merima Hadzic
     public function actionDelete()
     {
+        switch($_GET['model'])
+        {
+            // Load the respective model
+            case 'books':
+                $model = Book::model()->findByPk($_GET['id']);
+                break;
+            case 'users':
+                $model = User::model()->findByPk($_GET['id']);
+                break;
+            case 'orders':
+                $model = Order::model()->findByPk($_GET['id']);
+                break;
+            case 'authors':
+                $model = Author::model()->findByPk($_GET['id']);
+                break;
+            case 'reviews':
+                $model = Review::model()->findByPk($_GET['id']);
+                break;
+            case 'booksAuthors':
+                $model = BookAuthor::model()->findByPk($_GET['id']);
+                break;
+            case 'usersBooks':
+                $model = UserBook::model()->findByPk($_GET['id']);
+                break;
+            default:
+                $this->_sendResponse(501,
+                    sprintf('Error: Mode <b>delete</b> is not implemented for model <b>%s</b>',
+                        $_GET['model']) );
+                Yii::app()->end();
+        }
+        // Was a model found? If not, raise an error
+        if($model === null)
+            $this->_sendResponse(400,
+                sprintf("Error: Didn't find any model <b>%s</b> with ID <b>%s</b>.",
+                    $_GET['model'], $_GET['id']) );
 
+        // Delete the model
+        $num = $model->delete();
+        if($num>0)
+            $this->_sendResponse(200, $num); 
+        else
+            $this->_sendResponse(500,
+                sprintf("Error: Couldn't delete model <b>%s</b> with ID <b>%s</b>.",
+                    $_GET['model'], $_GET['id']) );
     }
 
     // Private functions
