@@ -46,7 +46,6 @@ CREATE  TABLE IF NOT EXISTS `book_store`.`tbl_order` (
   `user` INT NOT NULL ,
   `price` INT NOT NULL ,
   PRIMARY KEY (`id`) ,
-  UNIQUE INDEX `unique_id` (`id` ASC) ,
   UNIQUE INDEX `email_UNIQUE` (`user` ASC) ,
   CONSTRAINT `user`
     FOREIGN KEY (`user` )
