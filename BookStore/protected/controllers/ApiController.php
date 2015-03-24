@@ -188,7 +188,64 @@ class ApiController extends Controller
     //PUT
     public function actionUpdate()
     {
+        // Parse the PUT parameters. This didn't work: parse_str(file_get_contents('php://input'), $put_vars);
+        $json = file_get_contents('php://input'); //$GLOBALS['HTTP_RAW_POST_DATA'] is not preferred: http://www.php.net/manual/en/ini.core.php#ini.always-populate-raw-post-data
+        $put_vars = CJSON::decode($json,true);  //true means use associative array
 
+        switch($_GET['model'])
+        {
+            // Find respective model
+            case 'books':
+                $model = Book::model()->findByPk($_GET['id']);
+                break;
+            case 'users':
+                $model = User::model()->findByPk($_GET['id']);
+                break;
+            case 'orders':
+                $model = Order::model()->findByPk($_GET['id']);
+                break;
+            case 'authors':
+                $model = Author::model()->findByPk($_GET['id']);
+                break;
+            case 'reviews':
+                $model = Review::model()->findByPk($_GET['id']);
+                break;
+            case 'booksAuthors':
+                $model = BookAuthor::model()->findByPk($_GET['id']);
+                break;
+            case 'usersBooks':
+                $model = UserBook::model()->findByPk($_GET['id']);
+                break;
+            default:
+                $this->_sendResponse(501,
+                    sprintf( 'Error: Mode <b>update</b> is not implemented for model <b>%s</b>',
+                        $_GET['model']) );
+                Yii::app()->end();
+        }
+        // Did we find the requested model? If not, raise an error
+        if($model === null)
+            $this->_sendResponse(400,
+                sprintf("Error: Didn't find any model <b>%s</b> with ID <b>%s</b>.",
+                    $_GET['model'], $_GET['id']) );
+
+        // Try to assign PUT parameters to attributes
+        foreach($put_vars as $var=>$value) {
+            // Does model have this attribute? If not, raise an error
+            if($model->hasAttribute($var))
+                $model->$var = $value;
+            else {
+                $this->_sendResponse(500,
+                    sprintf('Parameter <b>%s</b> is not allowed for model <b>%s</b>',
+                        $var, $_GET['model']) );
+            }
+        }
+        // Try to save the model
+        if($model->save())
+            $this->_sendResponse(200, CJSON::encode($model));
+        else
+            // prepare the error $msg
+            $msg ="Update failed";
+            $this->_sendResponse(500, $msg );
     }
 
     //DELETE - Merima Hadzic
