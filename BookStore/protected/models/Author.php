@@ -29,8 +29,6 @@ class Author extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, name, biography', 'required'),
-			array('id', 'numerical', 'integerOnly'=>true),
 			array('name, biography', 'length', 'max'=>50),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.

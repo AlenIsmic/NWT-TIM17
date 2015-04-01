@@ -7,7 +7,7 @@
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'My Web Application',
+	'name'=>'BookStore',
 
 	// preloading 'log' component
 	'preload'=>array('log'),
@@ -87,6 +87,19 @@ return array(
 				*/
 			),
 		),
+            
+            'clientScript'=>array(
+                'packages'=>array(
+                    'bootstrap'=>array(
+                        'baseUrl'=>'bootstrap-3.3.4-dist/js',
+                        'js'=>array('bootstrap.min.js'),
+                    ),
+                    'jquery'=>array(
+                        'baseUrl'=>'scripts',
+                        'js'=>array('jquery-2.1.3.min.js'),
+                    )
+                ),
+            ),
 
 	),
 

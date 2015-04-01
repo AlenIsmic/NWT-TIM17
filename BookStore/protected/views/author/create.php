@@ -13,6 +13,6 @@ $this->menu=array(
 );
 ?>
 
-<h1>Create Author</h1>
+<h1>Add new author</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

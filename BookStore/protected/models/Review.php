@@ -32,8 +32,6 @@ class Review extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, content, user, type, reference', 'required'),
-			array('id, user, rate, type, reference', 'numerical', 'integerOnly'=>true),
 			array('content', 'length', 'max'=>150),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
