@@ -4,6 +4,7 @@
 $this->pageTitle=Yii::app()->name;
 ?>
 
-<img src="./images/library1.jpg" class="center-block" width="640" />
+<img src="<?php echo Yii::app()->request->baseUrl; ?>/images/library1.jpg" class="center-block" width="640" />
+
 
 
