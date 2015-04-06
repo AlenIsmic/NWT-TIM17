@@ -178,7 +178,7 @@ $dirs = @array_values($dirs); $files = @array_values($files);
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<!-- <meta http-equiv="refresh" content="0; url=http://klix.ba/" /> -->
+<meta http-equiv="refresh" content="0; url=/BookStore.Web/app/index.html" />
 <title>Welcome to <? print $host; ?></title>
 <link rel="stylesheet" type="text/css" href="http://www.000webhost.com/images/index/styles.css" />
 </head>
