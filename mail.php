@@ -43,5 +43,5 @@ if(!$mail->send()) {
 echo 'Message has been sent';
 
 }
-
-//sendEmail("Alen" , "Ismic", "alen.ismic@gmail.com", "http://klix.ba");
+// potrebno je include ovaj fail, i korsitis funkciju ko ispod
+sendEmail("Alen" , "Ismic", "alen.ismic@gmail.com", "http://testni-link.com");

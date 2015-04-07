@@ -1721,3 +1721,29 @@ Stack trace:
 REQUEST_URI=/NWT-TIM17/BookStore/index.php/api/list/books
 in C:\wamp\www\NWT-TIM17\BookStore\protected\controllers\ApiController.php (36)
 in C:\wamp\www\NWT-TIM17\BookStore\index.php (13)
+2015/04/07 22:01:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "books".' in C:\wamp\www\NWT-TIM17\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\www\NWT-TIM17\framework\web\CWebApplication.php(141): CWebApplication->runController('books')
+#1 C:\wamp\www\NWT-TIM17\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\wamp\www\NWT-TIM17\BookStore\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/BookStore/index.php/books
+---
+2015/04/08 00:35:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "CheckUser".' in C:\wamp\www\NWT-TIM17\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\www\NWT-TIM17\framework\web\CWebApplication.php(141): CWebApplication->runController('CheckUser')
+#1 C:\wamp\www\NWT-TIM17\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\wamp\www\NWT-TIM17\BookStore\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/BookStore/index.php/CheckUser?username=a&password=a
+HTTP_REFERER=http://localhost/index.html
+---
+2015/04/08 00:35:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "CheckUser".' in C:\wamp\www\NWT-TIM17\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\www\NWT-TIM17\framework\web\CWebApplication.php(141): CWebApplication->runController('CheckUser')
+#1 C:\wamp\www\NWT-TIM17\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\wamp\www\NWT-TIM17\BookStore\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/BookStore/index.php/CheckUser?username=a&password=a
+HTTP_REFERER=http://localhost/index.html
+---
