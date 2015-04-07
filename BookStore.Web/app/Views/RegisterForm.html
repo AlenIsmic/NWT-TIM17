@@ -1,17 +1,22 @@
-    
-    <h3>Registration Form</h3>
-        
-        
-    <div class="row">
-        Enter name:<input type="text" ng-model="model.name">
-    </div>
-    <div class="row">
-        Enter password:<input type="password" ng-model="model.password">
-    </div>
-    <div class="row">
-        Enter email:<input type="email" ng-model="model.email">
-    </div>
-        
-    <input type="button" class="btn-default" ng-click="registerMe()" value="Send registration request">
 
-
+<div ng-controller="RegisterCtrl">    
+            
+    <table class="register-form table">
+        <tr>
+            <th>Unesi korisničko ime:</th>            
+            <td><input type="text" ng-model="registerModel.username" /></td>
+        </tr>
+        <tr>
+            <th>Unesi password:</th>            
+            <td><input type="password" ng-model="registerModel.password" /></td>
+        </tr>
+        <tr>
+            <th>Unesi e-mail:</th>            
+            <td><input type="email" ng-model="registerModel.email" /></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="button" class="btn-success" ng-click="registerMe()" value="Registruj me"></td>
+        </tr>
+    </table>
+</div>

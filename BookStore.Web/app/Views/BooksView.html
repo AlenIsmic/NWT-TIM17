@@ -1,0 +1,16 @@
+<div ng-controller="BooksCtrl">
+    <h3>Dostupne knjige</h3>
+    
+    <table class="table">
+        <tr>
+            <th>Naslov</th>
+            <th>Žanr</th>
+            <th>Autor</th>
+        </tr>
+        <tr ng-repeat="b in books">
+            <td>{{b.title}}</td>
+            <td>{{b.genre}}</td>
+            <td>{{b.author}}</td>
+        </tr>
+    </table>
+</div>

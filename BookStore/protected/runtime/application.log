@@ -1662,3 +1662,62 @@ Stack trace:
 REQUEST_URI=/NWT-TIM17/BookStore/index.php/user/create
 HTTP_REFERER=http://localhost/NWT-TIM17/BookStore/index.php/user/view?id=2
 ---
+2015/04/07 03:55:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "list/books".' in C:\wamp\www\NWT-TIM17\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\www\NWT-TIM17\framework\web\CWebApplication.php(141): CWebApplication->runController('list/books')
+#1 C:\wamp\www\NWT-TIM17\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\wamp\www\NWT-TIM17\BookStore\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/NWT-TIM17/BookStore/index.php/list/books
+---
+2015/04/07 03:55:59 [error] [php] Undefined index: model (C:\wamp\www\NWT-TIM17\BookStore\protected\controllers\ApiController.php:36)
+Stack trace:
+#0 C:\wamp\www\NWT-TIM17\framework\web\CController.php(286): ApiController->runAction()
+#1 C:\wamp\www\NWT-TIM17\framework\web\CController.php(265): ApiController->runActionWithFilters()
+#2 C:\wamp\www\NWT-TIM17\framework\web\CWebApplication.php(282): ApiController->run()
+#3 C:\wamp\www\NWT-TIM17\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\wamp\www\NWT-TIM17\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#5 C:\wamp\www\NWT-TIM17\BookStore\index.php(13): CWebApplication->run()
+REQUEST_URI=/NWT-TIM17/BookStore/index.php/api/list/books
+in C:\wamp\www\NWT-TIM17\BookStore\protected\controllers\ApiController.php (36)
+in C:\wamp\www\NWT-TIM17\BookStore\index.php (13)
+2015/04/07 03:56:22 [error] [php] Undefined index: model (C:\wamp\www\NWT-TIM17\BookStore\protected\controllers\ApiController.php:36)
+Stack trace:
+#0 C:\wamp\www\NWT-TIM17\framework\web\CController.php(286): ApiController->runAction()
+#1 C:\wamp\www\NWT-TIM17\framework\web\CController.php(265): ApiController->runActionWithFilters()
+#2 C:\wamp\www\NWT-TIM17\framework\web\CWebApplication.php(282): ApiController->run()
+#3 C:\wamp\www\NWT-TIM17\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\wamp\www\NWT-TIM17\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#5 C:\wamp\www\NWT-TIM17\BookStore\index.php(13): CWebApplication->run()
+REQUEST_URI=/NWT-TIM17/BookStore/index.php/api/list/books
+in C:\wamp\www\NWT-TIM17\BookStore\protected\controllers\ApiController.php (36)
+in C:\wamp\www\NWT-TIM17\BookStore\index.php (13)
+2015/04/07 03:56:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "index".' in C:\wamp\www\NWT-TIM17\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\NWT-TIM17\framework\web\CController.php(270): CController->missingAction('')
+#1 C:\wamp\www\NWT-TIM17\framework\web\CWebApplication.php(282): CController->run('')
+#2 C:\wamp\www\NWT-TIM17\framework\web\CWebApplication.php(141): CWebApplication->runController('api')
+#3 C:\wamp\www\NWT-TIM17\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\wamp\www\NWT-TIM17\BookStore\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/NWT-TIM17/BookStore/index.php/api?action=list&model=books
+---
+2015/04/07 03:56:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "api.php".' in C:\wamp\www\NWT-TIM17\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\www\NWT-TIM17\framework\web\CWebApplication.php(141): CWebApplication->runController('api.php')
+#1 C:\wamp\www\NWT-TIM17\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\wamp\www\NWT-TIM17\BookStore\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/NWT-TIM17/BookStore/index.php/api.php?action=list&model=books
+---
+2015/04/07 03:57:25 [error] [php] Undefined index: model (C:\wamp\www\NWT-TIM17\BookStore\protected\controllers\ApiController.php:36)
+Stack trace:
+#0 C:\wamp\www\NWT-TIM17\framework\web\CController.php(286): ApiController->runAction()
+#1 C:\wamp\www\NWT-TIM17\framework\web\CController.php(265): ApiController->runActionWithFilters()
+#2 C:\wamp\www\NWT-TIM17\framework\web\CWebApplication.php(282): ApiController->run()
+#3 C:\wamp\www\NWT-TIM17\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\wamp\www\NWT-TIM17\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#5 C:\wamp\www\NWT-TIM17\BookStore\index.php(13): CWebApplication->run()
+REQUEST_URI=/NWT-TIM17/BookStore/index.php/api/list/books
+in C:\wamp\www\NWT-TIM17\BookStore\protected\controllers\ApiController.php (36)
+in C:\wamp\www\NWT-TIM17\BookStore\index.php (13)

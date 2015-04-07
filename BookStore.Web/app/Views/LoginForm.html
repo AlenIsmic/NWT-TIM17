@@ -1,6 +1,17 @@
-<div class="container-fluid">
-    <div>Enter username: <input type="text" ng-model="loginUsername"></div>
-    <div>Enter password: <input type="password" ng-model="loginPsw"></div>
-    
-    <input type="button" class="btn-default" data-ng-click="loginMe()" value="Login">
+
+<div ng-controller="LoginCtrl" class="container-fluid">
+    <table class="table login-form">
+        <tr>
+            <th>Unesi korisničko ime:</th>
+            <td> <input type="text" ng-model="loginModel.loginUsername"></td>
+        </tr>
+        <tr>
+            <th>Unesi password:</th>
+            <td><input type="password" ng-model="loginModel.loginPsw"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="button" class="btn-success right" data-ng-click="loginMe()" value="Login"></td>
+        </tr>
+    </table>
 </div>

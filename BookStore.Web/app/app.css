@@ -61,3 +61,13 @@
 	background-color:#EFF4FA;
 	text-decoration:none;
 }
+
+.login-form{
+    margin-top: 50px;
+    width: 35% !important;
+}
+
+.register-form{
+    margin-top: 50px;
+    width: 40% !important;
+}
