@@ -5,13 +5,10 @@ app.factory("BookStoreService", ['$http', function($http) {
     var bookStoreSvc = {};
     
     return {
-        checkUser: function(username, password)
+        login: function(username, password)
                     {
-                        return $http.get(serviceBase + 'CheckUser?username=' + username + '&password=' + password);
-                    },
-        checkIfAdmin: function(username)
-                    {
-                        return $http.get(serviceBase + 'CheckIfAdmin?username=' + username);
+                        //TODO : call API controller to find the user in the db
+                        return $http.get(serviceBase + 'api/users/1');
                     },
         sendRegistrationRequest: function(username, email, password)
                     {
@@ -23,14 +20,15 @@ app.factory("BookStoreService", ['$http', function($http) {
                         return $http.post(serviceBase + '/user', user).then(function(){
                             
                         }).success(function(){
+                            $http.post('/mail', email);
                             
                         }).error(function(){
-                            
+                            alert("Greška u procesiranju zahtjeva");
                         });
                     },
         getBooks: function()
                     {
-                        return $http.get('./index.php/api/book');
+                        return $http.get(serviceBase + 'api/books');
                     }
     }
     
