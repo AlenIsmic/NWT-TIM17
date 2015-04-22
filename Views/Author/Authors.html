@@ -1,0 +1,20 @@
+<div ng-controller="AuthorsCtrl">
+    <div id="mainmenu">
+        <ul>
+            <li><input type="text" ng-model="filterA" placeholder="Search author by name"></li>
+            <li class="pull-right"><a href="./index.html#/CreateAuthor">Add new author</a></li>
+        </ul>
+    </div>
+    <div class="container" ng-show="authors != null">
+        <table class="table">
+            <tr>
+                <th>Name</th>
+                <th>Biography</th>
+            </tr>
+            <tr ng-repeat="auth in authors | filter: {auth.name : filterA}">
+                <td>{{auth.name}}</td>
+                <td>{{auth.biography}}</td>
+            </tr>
+        </table>
+    </div>
+</div>

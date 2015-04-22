@@ -14,7 +14,7 @@ app.controller("RegisterCtrl", ['$scope', '$http', 'BookStoreService',
            alert("Morate unijeti sve podatke !");
        else 
        {
-           BookStoreService.sendRegistrationRequest($scope.registerModel.username, $scope.registerModel.email, $scope.registerModel.password);
+           BookStoreService.sendRegistrationRequest($scope.registerModel);
        }
     };
     

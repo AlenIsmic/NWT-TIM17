@@ -8,19 +8,16 @@ app.factory("BookStoreService", ['$http', function($http) {
         login: function(username, password)
                     {
                         //TODO : call API controller to find the user in the db
-                        return $http.get(serviceBase + 'api/users/1');
+                        return $http.post(serviceBase + 'api/login/', username, password);
                     },
-        sendRegistrationRequest: function(username, email, password)
+        sendRegistrationRequest: function(registerModel)
                     {
-                        var user = new {
-                          username : username,
-                          emil : email,
-                          password : password
-                        };
-                        return $http.post(serviceBase + '/user', user).then(function(){
-                            
+                        return $http({
+                            method : 'POST',
+                            url : serviceBase + 'api/users',
+                            data : registerModel
                         }).success(function(){
-                            $http.post('/mail', email);
+                            $http.post('/mail', registerModel.email);
                             
                         }).error(function(){
                             alert("Greška u procesiranju zahtjeva");
@@ -29,6 +26,10 @@ app.factory("BookStoreService", ['$http', function($http) {
         getBooks: function()
                     {
                         return $http.get(serviceBase + 'api/books');
+                    },
+        getAuthors: function()
+                    {
+                        return $http.get(serviceBase + 'api/authors');
                     }
     }
     

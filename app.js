@@ -10,6 +10,14 @@ var app = angular.module('bookStoreApp', ['ngRoute'])
             .when('/Register', {
                 templateUrl: 'Views/RegisterForm.html'
             })
+            .when('/Authors',
+            {
+                templateUrl: 'Views/Author/Authors.html'                
+            })
+            .when('/CreateAuthor',
+            {
+                templateUrl: 'Views/Author/CreateAuthor.html'
+            })
             .otherwise({
                 templateUrl: 'Views/BooksView.html'
             });

@@ -77,7 +77,6 @@ class ApiController extends Controller
             $this->_sendResponse(200, CJSON::encode($rows));
         }
     }
-
         //GET - Alen Ismic
     public function actionView()
     {
