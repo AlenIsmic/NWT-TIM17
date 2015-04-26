@@ -2,19 +2,121 @@
     <div id="mainmenu">
         <ul>
             <li><input type="text" ng-model="filterA" placeholder="Search author by name"></li>
-            <li class="pull-right"><a href="./index.html#/CreateAuthor">Add new author</a></li>
+            <li class="pull-right"><button class="btn-link" ng-click="addAuthor()">Add new author</button></li>
         </ul>
     </div>
-    <div class="container" ng-show="authors != null">
+    <div ng-show="authors != null">
         <table class="table">
-            <tr>
-                <th>Name</th>
-                <th>Biography</th>
-            </tr>
-            <tr ng-repeat="auth in authors | filter: {auth.name : filterA}">
-                <td>{{auth.name}}</td>
-                <td>{{auth.biography}}</td>
+            <tr ng-repeat="auth in authors | filter: filterA">
+                <td class="col-md-4">{{auth.name}}</td>
+                <td class="col-md-4">
+                    <span>See more about</span>
+                    <input type="button" class="btn-link" ng-click="showAuthorDetail($index)" value={{auth.name}}>
+                </td>
+<!--                <td>
+                    There are currently {{}} books of this author.
+                </td>-->
+                <td class="col-md-1">
+                    <input type="button" class="btn-default" ng-click="showAllAuthorBook($index)" value="Show all books">
+                </td>
+                <td class="col-md-1">
+                    <input type="button" class="btn-default" ng-click="addNewBookForAuthor($index)" value="Add new book">
+                </td>
             </tr>
         </table>
     </div>
+<div id="addAuthorModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <p class="modal-title">Add new author</p>
+            </div>
+            <div class="modal-body">
+                <table class="table">
+                    <tr>
+                        <th>Name</th>
+                        <td><input type="text" ng-model="createAuthorModel.name" /></td>
+                    </tr>
+                    <tr>
+                        <th>Biography</th>
+                        <td><input type="textarea" ng-model="createAuthorModel.biography" /></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" ng-click="addAuthorConfirm()">Add author</button>
+                <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+    
+<div id="showAuthorDetailModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <img class="author-image" ng-src="./images/author_{{selectedAuthor.id}}">
+                <span>{{selectedAuthor.name}}</span>
+                <hr>
+                <span>
+                    {{selectedAuthor.biography}}
+                </span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+    
+<div id="addBookByAuthorModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <table class="table">
+                    <tr>
+                        <th>Title</th>
+                        <td><input type="text" ng-model='addBookModel.title'></td>
+                    </tr>
+                    <tr>
+                        <th>Summary</th>
+                        <td><textarea ng-model='addBookModel.summary'></textarea></td>
+                    </tr>
+                    <tr>
+                        <th>Genre</th>
+                        <td>
+                            <select ng-model="addBookModel.genre">
+                                <option value="drama">Drama</option>
+                                <option value="thriler">Thriler</option>
+                                <option value="comedy">Comedy</option>
+                                <option value="education">Education</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Price</th>
+                        <td><input type="text" ng-model="addBookModel.price"></td>
+                    </tr>
+                    <tr>
+                        <th>Available</th>
+                        <td>
+                            <input type="radio" ng-value="true"  ng-model="addBookModel.available">Yes
+                            <input type="radio" ng-value="false" ng-model="addBookModel.available">No
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Cover photo</th>
+                        <td><input type="file" ng-model="addBookModel.cover"></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <!--<button type="button" class="btn btn-primary" ng-click="showAllAuthorBook(addBookAuthorInd)">See author's books</button>-->
+                <button type="button" class="btn btn-success" ng-click="addAuthorsBookConfirm()">Add book</button>
+                <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 </div>

@@ -1,8 +1,8 @@
 app.factory("BookStoreService", ['$http', function($http) {
     
-    var serviceBase = './BookStore/index.php/'
+    var serviceBase = './BookStore/index.php/';
     
-    var bookStoreSvc = {};
+    var filteredBooks = [];
     
     return {
         login: function(username, password)
@@ -25,12 +25,37 @@ app.factory("BookStoreService", ['$http', function($http) {
                     },
         getBooks: function()
                     {
+                        filteredBooks = [];
                         return $http.get(serviceBase + 'api/books');
+                    },
+        addBooksByAuthor: function(addBookModel)
+                    {
+                        return $http.post(serviceBase + 'api/books', {model: addBookModel})
+                                .error(function(){
+                                    alert("Adding new book failed!");
+                        });
                     },
         getAuthors: function()
                     {
                         return $http.get(serviceBase + 'api/authors');
+                    },
+        addAuthor: function(createAuthorModel)
+                    {
+                        //post to create author api service
+                        return $http.post(serviceBase + 'api/authors', {model: createAuthorModel})
+                                .error(function(){
+                                    alert("Adding new author failed!");
+                        });
+                    },
+        filterBooksByAuthor: function(ind)
+                    {
+                        //get books by authorID
+                        filteredBooks = $http.get(serviceBase + 'api/booksAuthors/');
+                    },
+        getFilteredBooks : function()
+                    {
+                        return filteredBooks;
                     }
-    }
+    };
     
 }]);
