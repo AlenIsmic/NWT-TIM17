@@ -4,9 +4,9 @@
 return array(
 	'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/book_store.db',
 	// uncomment the following lines to use a MySQL database
-	'connectionString' => 'mysql:host=localhost;dbname=book_store',
+	'connectionString' => 'mysql:host=eu-cdbr-west-01.cleardb.com;dbname=heroku_be72c66e48bccd5',
 	'emulatePrepare' => true,
-	'username' => 'root',
-	'password' => '',
+	'username' => 'be0265e6cf6a49',
+	'password' => 'a86a1fdf',
 	'charset' => 'utf8',
 );
