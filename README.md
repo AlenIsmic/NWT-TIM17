@@ -1,3 +1,6 @@
+Deploy na:
+http://floating-taiga-2801.herokuapp.com/
+
 MODUL 1: Opći 
 
 	Prijava na sistem
