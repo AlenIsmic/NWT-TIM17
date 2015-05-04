@@ -1,4 +1,27 @@
 /* app css stylesheet */
+#title_div{
+    background: wheat;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    height: 90px;
+    margin-top: 0;
+    padding-top: 15px;
+    text-align: center;
+    color: #6399cd;
+}
+
+.sub-view{
+    margin-top: 10px;
+    max-width: 90%;
+    margin-left: 55px;
+}
+
+#other-menu{
+    width: 90%;
+    margin-left: 5%;
+    background:white url(bg.gif) repeat-x left top;
+}
 
 .menu {
   list-style: none;
@@ -31,7 +54,10 @@
 
 #mainmenu
 {
-	background:white url(bg.gif) repeat-x left top;
+    width: 90%;
+    margin-left: 5%;
+    background:white url(bg.gif) repeat-x left top;
+    text-align: center;
 }
 
 #mainmenu ul
@@ -80,9 +106,7 @@
 
 #content-main
 {
-    width: 80%;
-    margin-left: 75px;
-    margin-top: 40px;
+    width: 100%;
 }
 
 #showAuthorDetailModal{
@@ -100,4 +124,23 @@
 .author-image{
     width: 30px;
     height: 30px;
+}
+
+.round-corners {
+    border-radius: 25px;
+    border: 1px #6399cd solid ; 
+    width: 340px !important;
+    height: 150px; 
+    margin: 2px 5px 2px 5px;
+}
+
+.book-title{
+    height: 20px;
+}
+.book-summary{
+    height: 50px;
+}
+
+.book-links{
+    margin-left: 30px;
 }

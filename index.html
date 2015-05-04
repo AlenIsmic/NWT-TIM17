@@ -20,6 +20,7 @@
   <script src="Controllers/RegisterCtrl.js"></script>
   <script src="Controllers/BooksCtrl.js"></script>
   <script src="Controllers/AuthorsCtrl.js"></script>
+  <script src="Controllers/HomeCtrl.js"></script>
   
   <script src="service.js"></script>
   
@@ -31,34 +32,29 @@
   
 </head>
 
-<body>
+<body class="body">
     
     <div ng-controller="mainController">
     
         <div class="container" id="page">
-            <div class="navbar navbar-fixed-scroll">
-                <div class="container">
-                    <div class="navbar-header">
-                        <h2>BookStore</h2>
-                    </div>
-                    <div class="navbar-right">
+            <div id="mainmenu">
+                <ul>
+                    <li><a href="./index.html#/Home">Home</a></li>
+                    <li><a href="./index.html#/Authors">Authors</a></li>
+                    <li><a href="./index.html#/Books">Books</a></li>
+                    <li><a href="./index.html#/Orders">Orders</a></li>
+                    <li><a href="./index.html#/Reviews">Reviews</a></li>
+                    <li><a href="./index.html#/ContactUs">Contact Us</a></li>
+                    <li class="navbar-right">
                         <a ng-show="!isAuthenticated" href="./index.html#/Login">Login</a>
                         <a ng-show="isAuthenticated" href="#">Logout</a>
                         <a href="./index.html#/Register">Register</a>
-                    </div>
-                </div>
+                    </li>
+                </ul>    
             </div>
-        <div id="mainmenu">
-            <ul>
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="./index.html#/Authors">Authors</a></li>
-                <li><a href="#">Books</a></li>
-                <li><a href="#">Orders</a></li>
-                <li><a href="#">Reviews</a></li>
-                <li><a href="#">Contact Us</a></li>
-            </ul>    
-        </div>
-
+            <div id="title_div">
+                <h3>NWT - BookStore</h3> 
+            </div>
         <div id="content-main">
             <div data-ng-view=""></div>
         </div>

@@ -18,8 +18,24 @@ var app = angular.module('bookStoreApp', ['ngRoute'])
             {
                 templateUrl: 'Views/Author/CreateAuthor.html'
             })
+            .when('/Orders',
+            {
+                templateUrl: 'Views/Orders.html'
+            })
+            .when('/Reviews',
+            {
+                templateUrl: 'Views/Reviews.html'
+            })
+            .when('/Books',
+            {
+                templateUrl: 'Views/Books.html'
+            })
+            .when('/ContactUs',
+            {
+                templateUrl: 'Views/ContactUs.html'
+            })
             .otherwise({
-                templateUrl: 'Views/BooksView.html'
+                templateUrl: 'Views/Home.html'
             });
   }]);
   

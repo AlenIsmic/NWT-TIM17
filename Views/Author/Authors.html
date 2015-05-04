@@ -5,7 +5,7 @@
             <li class="pull-right"><button class="btn-link" ng-click="addAuthor()">Add new author</button></li>
         </ul>
     </div>
-    <div ng-show="authors != null">
+    <div  class="sub-view" ng-show="authors != null">
         <table class="table">
             <tr ng-repeat="auth in authors | filter: filterA">
                 <td class="col-md-4">{{auth.name}}</td>
@@ -13,9 +13,6 @@
                     <span>See more about</span>
                     <input type="button" class="btn-link" ng-click="showAuthorDetail($index)" value={{auth.name}}>
                 </td>
-<!--                <td>
-                    There are currently {{}} books of this author.
-                </td>-->
                 <td class="col-md-1">
                     <input type="button" class="btn-default" ng-click="showAllAuthorBook($index)" value="Show all books">
                 </td>
