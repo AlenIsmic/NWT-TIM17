@@ -1,42 +1,29 @@
-app.directive("dropdown", function($rootScope) {
-	return {
-		restrict: "E",
-		templateUrl: "templates/dropdown.html",
-		scope: {
-			placeholder: "@",
-			list: "=",
-			selected: "=",
-			property: "@"
-		},
-		link: function(scope) {
-			scope.listVisible = false;
-			scope.isPlaceholder = true;
-
-			scope.select = function(item) {
-				scope.isPlaceholder = false;
-				scope.selected = item;
-			};
-
-			scope.isSelected = function(item) {
-				return item[scope.property] === scope.selected[scope.property];
-			};
-
-			scope.show = function() {
-				scope.listVisible = true;
-			};
-
-			$rootScope.$on("documentClicked", function(inner, target) {
-				console.log($(target[0]).is(".dropdown-display.clicked") || $(target[0]).parents(".dropdown-display.clicked").length > 0);
-				if (!$(target[0]).is(".dropdown-display.clicked") && !$(target[0]).parents(".dropdown-display.clicked").length > 0)
-					scope.$apply(function() {
-						scope.listVisible = false;
-					});
-			});
-
-			scope.$watch("selected", function(value) {
-				scope.isPlaceholder = scope.selected[scope.property] === undefined;
-				scope.display = scope.selected[scope.property];
-			});
-		}
-	}
+angular.module('bookStoreApp')
+    .directive('addAuthorData', function () {
+        return {
+            restrict: 'EA',    
+            template:function(elem,attrs) {
+                return '<div class="modal-body">' +
+                            '<table class="table">' +
+                                '<tr>'+
+                                    '<th>Name</th>'+
+                                    '<td><input type="text" ng-model="createAuthorModel.name" /></td>'+
+                                '</tr>'+
+                                '<tr>'+
+                                    '<th>Biography</th>'+
+                                    '<td><input type="textarea" ng-model="createAuthorModel.biography" /></td>'+
+                                '</tr>'+
+                            '</table>'+
+                        '</div>'+
+                        '<div class="modal-footer">'+
+                            '<button type="button" class="btn btn-success" ng-click="addAuthorConfirm()">Add author</button>'+
+                            '<button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>'+
+                        '</div>;'
+           },
+            link: function ($scope, element, attrs) {
+                element.bind('mouseover', function() {
+                    element.css('cursor', 'pointer');
+                });
+            }
+    }
 });

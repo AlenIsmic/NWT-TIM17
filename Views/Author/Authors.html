@@ -28,22 +28,7 @@
             <div class="modal-header">
                 <p class="modal-title">Add new author</p>
             </div>
-            <div class="modal-body">
-                <table class="table">
-                    <tr>
-                        <th>Name</th>
-                        <td><input type="text" ng-model="createAuthorModel.name" /></td>
-                    </tr>
-                    <tr>
-                        <th>Biography</th>
-                        <td><input type="textarea" ng-model="createAuthorModel.biography" /></td>
-                    </tr>
-                </table>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-success" ng-click="addAuthorConfirm()">Add author</button>
-                <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-            </div>
+            <div add-author-data></div>
         </div>
     </div>
 </div>
@@ -58,6 +43,26 @@
                 <span>
                     {{selectedAuthor.biography}}
                 </span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+ <div id="showAuthorBooksModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div>{{detailedAuthorBooks.name}}</div>
+                <ul>
+                    <li ng-repeat="b in detailedAuthorBooks.books">
+                        {{b.title}}
+                    </li>
+                </ul>
+                
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
