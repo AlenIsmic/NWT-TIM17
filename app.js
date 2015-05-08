@@ -28,7 +28,7 @@ var app = angular.module('bookStoreApp', ['ngRoute'])
             })
             .when('/Books',
             {
-                templateUrl: 'Views/Books.html'
+                templateUrl: 'Views/Book/Books.html'
             })
             .when('/ContactUs',
             {

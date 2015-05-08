@@ -1,0 +1,29 @@
+<div ng-controller="BooksCtrl" class="sub-view">
+    <div id="mainmenu">
+        <ul>
+            <li><input type="text" ng-model="titleFilter" placeholder="Search book by title"></li>
+            <li class="pull-right"><button class="btn-link" ng-click="addBook()">Add new book</button></li>
+        </ul>
+    </div>
+    <div class="row">
+        <div class="col-xs-6 col-lg-4 round-corners"  ng-repeat="b in books | filter: titleFilter">
+            <h2 class="book-title">{{b.title}}</h2>
+            <p class="book-summary">{{b.summary}}</p>
+            <div class="book-links">
+                <button class="btn btn-primary">See details >></button>
+                <button class="btn btn-info">See reviews >></button>
+            </div>
+        </div>
+    </div>
+    <div id="addBookModal" class="modal fade">
+        <div add-book-data></div>
+       <!-- <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <p class="modal-title">Add new book</p>
+                </div>
+                <div add-book-data></div>
+            </div>
+        </div>-->
+    </div>
+</div>

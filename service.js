@@ -40,13 +40,21 @@ app.factory("BookStoreService", ['$http', function($http) {
                         return $http.get(serviceBase + 'api/authors');
                     },
         addAuthor: function(createAuthorModel)
-                    {
-                        //post to create author api service
-                        return $http.post(serviceBase + 'api/authors', {model: createAuthorModel})
-                                .error(function(){
-                                    alert("Adding new author failed!");
-                        });
-                    },
+        {
+            //post to create author api service
+            return $http.post(serviceBase + 'api/authors', {model: createAuthorModel})
+                .error(function(){
+                    alert("Adding new author failed!");
+                });
+        },
+        addBook: function(createBookModel)
+        {
+            //post to create author api service
+            return $http.post(serviceBase + 'api/books', {model: createBookModel})
+                .error(function(){
+                    alert("Adding new book failed!");
+                });
+        },
         filterBooksByAuthor: function(ind)
                     {
                         //get books by authorID
