@@ -21,4 +21,9 @@ app.controller("BooksCtrl", ['$scope', 'BookStoreService',
                     }
                 });
             };
+
+            $scope.showBookDetail = function(ind){
+                $scope.selectedBook = $scope.books[ind];
+                $("#showBookDetailModal").modal('show');
+            };
 }]);
