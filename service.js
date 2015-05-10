@@ -50,11 +50,8 @@ app.factory("BookStoreService", ['$http', function($http) {
         addBook: function(createBookModel)
         {
             return $http.post(serviceBase + 'api/books', createBookModel)
-                .success(function(data, status, headers, config) {
-                    alert( "sucess message: " + JSON.stringify({data: data}));
-                })
-                .error(function(data, status, headers, config) {
-                    alert( "failure message: " + JSON.stringify({data: data}));
+                .error(function(){
+                    alert("Adding new book failed!");
                 });
         },
         filterBooksByAuthor: function(ind)

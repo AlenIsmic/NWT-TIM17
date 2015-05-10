@@ -11,17 +11,6 @@ app.controller("BooksCtrl", ['$scope', 'BookStoreService',
                 $("#addBookModal").modal('show');
             };
 
-            $scope.addBookConfirm = function(){
-                //call service and pass createBookModel
-                var result = BookStoreService.addBook($scope.createBookModel).then(function(result){
-                    if(result.statusText == "OK")
-                    {
-                        $scope.authors.push($scope.createBookModel);
-                        $("#addBookModal").modal('hide');
-                    }
-                });
-            };
-
             $scope.showBookDetail = function(ind){
                 $scope.selectedBook = $scope.books[ind];
                 $("#showBookDetailModal").modal('show');
@@ -33,5 +22,9 @@ app.controller("BooksCtrl", ['$scope', 'BookStoreService',
 
             $scope.addBookConfirm = function(){
                  BookStoreService.addBook($scope.addBookModel);
+                $("#addBookModal").modal('hide');
+
+                $scope.books.push($scope.addBookModel);
+                $scope.addBookModel = null;
             };
 }]);
