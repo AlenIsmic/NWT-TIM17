@@ -47,10 +47,10 @@ angular.module('bookStoreApp').directive('addBookData', function () {
             '<th>Genre</th>'+
             '<td>'+
             '<select ng-model="addBookModel.genre">'+
-            '<option value="drama">Drama</option>'+
-            '<option value="thriler">Thriler</option>'+
-            '<option value="comedy">Comedy</option>'+
-            '<option value="education">Education</option>'+
+            '<option value="1">Drama</option>'+
+            '<option value="2">Thriler</option>'+
+            '<option value="3">Comedy</option>'+
+            '<option value="4">Education</option>'+
             '</select>'+
             '</td>'+
             '</tr>'+
@@ -72,7 +72,7 @@ angular.module('bookStoreApp').directive('addBookData', function () {
             '</table>'+
             '</div>'+
             '<div class="modal-footer">'+
-            '<button type="button" class="btn btn-success" ng-click="addAuthorsBookConfirm()">Add book</button>'+
+            '<button type="button" class="btn btn-success" ng-click="addBookConfirm()">Add book</button>'+
             '<button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>'+
             '</div>'+
             '</div>'+

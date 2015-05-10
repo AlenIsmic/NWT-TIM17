@@ -1,7 +1,7 @@
 app.factory("BookStoreService", ['$http', function($http) {
     
     var serviceBase = './BookStore/index.php/';
-    
+
     var filteredBooks = [];
     
     return {
@@ -49,10 +49,12 @@ app.factory("BookStoreService", ['$http', function($http) {
         },
         addBook: function(createBookModel)
         {
-            //post to create author api service
-            return $http.post(serviceBase + 'api/books', {model: createBookModel})
-                .error(function(){
-                    alert("Adding new book failed!");
+            return $http.post(serviceBase + 'api/books', createBookModel)
+                .success(function(data, status, headers, config) {
+                    alert( "sucess message: " + JSON.stringify({data: data}));
+                })
+                .error(function(data, status, headers, config) {
+                    alert( "failure message: " + JSON.stringify({data: data}));
                 });
         },
         filterBooksByAuthor: function(ind)

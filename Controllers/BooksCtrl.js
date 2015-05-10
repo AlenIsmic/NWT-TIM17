@@ -26,4 +26,12 @@ app.controller("BooksCtrl", ['$scope', 'BookStoreService',
                 $scope.selectedBook = $scope.books[ind];
                 $("#showBookDetailModal").modal('show');
             };
+
+            $scope.addBook = function(){
+                $("#addBookModal").modal('show');
+            };
+
+            $scope.addBookConfirm = function(){
+                 BookStoreService.addBook($scope.addBookModel);
+            };
 }]);
