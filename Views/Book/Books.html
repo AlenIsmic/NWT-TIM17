@@ -11,7 +11,7 @@
             <p class="book-summary">{{b.summary}}</p>
             <div class="book-links">
                 <button class="btn btn-primary" ng-click="showBookDetail($index)">See details >></button>
-                <button class="btn btn-info">See reviews >></button>
+                <button class="btn btn-info" ng-click="showReviews($index)">See reviews >></button>
             </div>
         </div>
     </div>
@@ -27,10 +27,12 @@
                     <hr>
                 <span>
                     {{selectedBook.summary}}
-                </span><br>
-                <span>
-                {{selectedBook.price}} KM
-                </span>
+                </span><br><br>
+                    <div style="text-align: right;">
+                        <span>
+                            <b> {{selectedBook.price}} KM</b>
+                        </span>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
