@@ -69,7 +69,7 @@ return array(
                 array('api/delete', 'pattern'=>'api/<model:\w+>/<id:\d+>', 'verb'=>'DELETE'),
                 array('api/create', 'pattern'=>'api/<model:\w+>', 'verb'=>'POST'),
                 array('api/login', 'pattern'=>'api/login/<un:\w+>/<pw:\w+>', 'verb'=>'GET'),
-
+                array('api/fetchReview', 'pattern'=>'api/reviews/<ref:\d+>/<type:\d+>', 'verb'=>'GET'),
                 // Other controllers
                 '<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
 

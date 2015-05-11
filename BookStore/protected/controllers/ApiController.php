@@ -322,6 +322,12 @@ class ApiController extends Controller
             $this->_sendResponse(200, CJSON::encode($model));
     }
 
+    public function actionFetchReview()
+    {
+        $review = Review::model()->findAllByAttributes(array('reference'=>$_GET["ref"], 'type'=>$_GET["type"] ));
+
+        $this->_sendResponse(200, CJSON::encode($review));
+    }
     // Private functions
 
     private function _sendResponse($status = 200, $body = '', $content_type = 'text/html')
