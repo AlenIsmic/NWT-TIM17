@@ -1,4 +1,4 @@
-app.factory("BookStoreService", ['$http', function($http) {
+﻿app.factory("BookStoreService", ['$http', function($http) {
     
     var serviceBase = './BookStore/index.php/';
 
@@ -62,7 +62,22 @@ app.factory("BookStoreService", ['$http', function($http) {
         getFilteredBooks : function()
                     {
                         return filteredBooks;
-                    }
+                    },
+        getMyOrders : function()
+        {
+            return $http.get(serviceBase + 'api/orders')
+                .error(function(){
+                    alert("Retrieving orders failed!");
+                });
+        },
+ 
+        orderBook: function(orderBookModel)
+        {
+            return $http.post(serviceBase + 'api/orders', orderBookModel)
+                .error(function(){
+                    alert("Adding new order failed!");
+                });
+        }
     };
     
 }]);
