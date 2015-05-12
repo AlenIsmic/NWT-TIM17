@@ -27,8 +27,7 @@ app.controller("BooksCtrl", ['$scope', 'BookStoreService',
                 $scope.books.push($scope.addBookModel);
                 $scope.addBookModel = null;
             };
-}]);
-
+            
             $scope.showReviews = function(ind){
                 $scope.bookReviews = null;
                 $scope.selectedBook = $scope.books[ind];
@@ -56,3 +55,22 @@ app.controller("BooksCtrl", ['$scope', 'BookStoreService',
                 $scope.bookReviews.push($scope.addReviewModel);
                 $scope.addReviewModel = null;
             };
+            
+            $scope.orderBook = function(index){
+                $scope.orderBookModel = {};
+                $scope.orderBookModel.price = $scope.books[index].price; 
+                $scope.orderBookModel.title = $scope.books[index].title; 
+              $("#orderBookModal").modal('show');  
+            };
+            
+            $scope.getDatetime = function() {
+                return (new Date).toLocaleFormat("%A, %B %e, %Y");
+            };
+
+            $scope.orderBookConfirm = function(){
+                //$scope.orderBookModel.date = $scope.getDatetime();                
+                BookStoreService.orderBook($scope.orderBookModel);
+                $("#orderBookModal").modal('hide');
+            };
+}]);
+

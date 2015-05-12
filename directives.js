@@ -109,3 +109,27 @@ angular.module('bookStoreApp')
             }
         }
     });
+
+
+angular.module('bookStoreApp')
+    .directive('orderBook', function () {
+        return {
+            restrict: 'EA',
+            template:function(elem,attrs) {
+                return '<div class="modal-body">'+
+                        '<table>'+
+                        '<tr><th>Book title </th><td>{{orderBookModel.title}}</td></tr>'+
+                        '<tr><th>Price </th><td>{{orderBookModel.price}}</td></tr>'+
+                        '</table></div>'+
+                        '<div class="modal-footer">'+
+                        '<button type="button" class="btn btn-success" ng-click="orderBookConfirm()">Order book</button>'+
+                        '<button type="button" class="btn btn-success" data-dismiss="modal">Close</button>'+
+                        '</div>'
+            },
+            link: function ($scope, element, attrs) {
+                element.bind('mouseover', function() {
+                    element.css('cursor', 'pointer');
+                });
+            }
+        }
+    });
