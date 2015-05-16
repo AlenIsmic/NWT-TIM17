@@ -27,7 +27,13 @@ app.controller("BooksCtrl", ['$scope', 'BookStoreService',
                 $scope.books.push($scope.addBookModel);
                 $scope.addBookModel = null;
             };
-            
+
+            $scope.alerts = [ ];
+
+            $scope.closeAlert = function(index) {
+                $scope.alerts.splice(index, 1);
+            };
+
             $scope.showReviews = function(ind){
                 $scope.bookReviews = null;
                 $scope.selectedBook = $scope.books[ind];

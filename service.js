@@ -50,8 +50,15 @@
         addBook: function(createBookModel)
         {
             return $http.post(serviceBase + 'api/books', createBookModel)
+                .success(function () {
+
+                    //show ui.bootstrap.alert success message
+                    app.$scope.alerts.push({type:'success', msg: 'Book successfully added !'});
+                })
                 .error(function(){
-                    alert("Adding new book failed!");
+
+                    //show ui.bootstrap.alert danger message
+                    app.$scope.alerts.push({type:'danger', msg: 'Add new book failed !'});
                 });
         },
 
