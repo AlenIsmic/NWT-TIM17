@@ -85,3 +85,51 @@ angular.module('bookStoreApp').directive('addBookData', function () {
         }
     }
 });
+
+angular.module('bookStoreApp')
+    .directive('addReviewData', function () {
+        return {
+            restrict: 'EA',
+            template:function(elem,attrs) {
+                return '<div class="modal-body">'+
+                    '<input type="text" ng-model="addReviewModel.content" placeholder="Add comment" style="width: 80%; height: 60px">'+
+                    'Rate:  <select ng-model="addReviewModel.rate">'+
+                                '<option value="1">1</option>'+
+                                '<option value="2">2</option>'+
+                                '<option value="3">3</option>'+
+                                'option value="4">4</option>'+
+                                '<option value="5">5</option>'+
+                            '</select>'+
+                '</div>'
+            },
+            link: function ($scope, element, attrs) {
+                element.bind('mouseover', function() {
+                    element.css('cursor', 'pointer');
+                });
+            }
+        }
+    });
+
+
+angular.module('bookStoreApp')
+    .directive('orderBook', function () {
+        return {
+            restrict: 'EA',
+            template:function(elem,attrs) {
+                return '<div class="modal-body">'+
+                        '<table>'+
+                        '<tr><th>Book title </th><td>{{orderBookModel.title}}</td></tr>'+
+                        '<tr><th>Price </th><td>{{orderBookModel.price}}</td></tr>'+
+                        '</table></div>'+
+                        '<div class="modal-footer">'+
+                        '<button type="button" class="btn btn-success" ng-click="orderBookConfirm()">Order book</button>'+
+                        '<button type="button" class="btn btn-success" data-dismiss="modal">Close</button>'+
+                        '</div>'
+            },
+            link: function ($scope, element, attrs) {
+                element.bind('mouseover', function() {
+                    element.css('cursor', 'pointer');
+                });
+            }
+        }
+    });

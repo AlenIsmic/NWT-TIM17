@@ -40,5 +40,33 @@
             </div>
         </div>
     </div>
-
+  <div id="showReviewsModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img class="book-image" ng-src="./images/book_{{selectedBook.id}}">
+                    <span>{{selectedBook.title}}</span>
+                    <div style="text-align: right">
+                        <span>
+                           Overall rate:  <b>0</b>
+                        </span>
+                    </div>
+                    <hr>
+                    <div>
+                        <div ng-repeat="bookReview in bookReviews">
+                            <span>{{bookReview.content}}</span>
+                            <div style="text-align: right">
+                                <span>Rate: {{bookReview.rate}}</span>
+                            </div><hr>
+                        </div>
+                       <div add-review-data></div>
+                   </div>
+               </div>
+               <div class="modal-footer">
+                   <button type="button" class="btn btn-success" ng-click="addReview()">Add review</button>
+                   <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+               </div>
+           </div>
+       </div>
+   </div>
 </div>
