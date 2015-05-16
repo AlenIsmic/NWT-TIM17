@@ -328,6 +328,18 @@ class ApiController extends Controller
 
         $this->_sendResponse(200, CJSON::encode($review));
     }
+
+    public function actionBookStatisticsByGenre()
+    {
+        $dramaNum = Book::model()->countByAttributes(array('genre'=>1));
+        $thrillerNum = Book::model()->countByAttributes(array('genre'=>2));
+        $comedyNum = Book::model()->countByAttributes(array('genre'=>3));
+        $educationNum = Book::model()->countByAttributes(array('genre'=>4));
+
+        $obj = (object) array('Drama' => $dramaNum, 'Thriller' => $thrillerNum, 'Comedy' => $comedyNum, 'Education' => $educationNum);
+
+        $this->_sendResponse(200, CJSON::encode($obj));
+    }
     // Private functions
 
     private function _sendResponse($status = 200, $body = '', $content_type = 'text/html')
