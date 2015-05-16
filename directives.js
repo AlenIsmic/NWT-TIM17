@@ -48,7 +48,7 @@ angular.module('bookStoreApp').directive('addBookData', function () {
             '<td>'+
             '<select ng-model="addBookModel.genre">'+
             '<option value="1">Drama</option>'+
-            '<option value="2">Thriler</option>'+
+            '<option value="2">Thriller</option>'+
             '<option value="3">Comedy</option>'+
             '<option value="4">Education</option>'+
             '</select>'+

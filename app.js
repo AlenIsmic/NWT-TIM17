@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('bookStoreApp', ['ngRoute', 'ui.bootstrap'])
+var app = angular.module('bookStoreApp', ['ngRoute', 'ui.bootstrap', 'chart.js'])
     .config(['$routeProvider',
         function($routeProvider) {
             $routeProvider
@@ -33,6 +33,10 @@ var app = angular.module('bookStoreApp', ['ngRoute', 'ui.bootstrap'])
             .when('/ContactUs',
             {
                 templateUrl: 'Views/ContactUs.html'
+            })
+            .when('/Dashboard',
+            {
+                templateUrl: 'Views/Dashboard.html'
             })
             .otherwise({
                 templateUrl: 'Views/Home.html'

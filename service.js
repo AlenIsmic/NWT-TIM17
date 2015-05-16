@@ -102,6 +102,14 @@
                 .error(function(){
                     alert("Adding new order failed!");
                 });
+        },
+
+        getBookNumberByGenre: function()
+        {
+            return $http.get(serviceBase + 'api/statistics/book/genre')
+                .error(function(){
+                    alert("getBookNumberByGenre failed!");
+                });
         }
     };
     
