@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('bookStoreApp', ['ngRoute'])
+var app = angular.module('bookStoreApp', ['ngRoute', 'ui.bootstrap'])
     .config(['$routeProvider',
         function($routeProvider) {
             $routeProvider
@@ -38,7 +38,7 @@ var app = angular.module('bookStoreApp', ['ngRoute'])
                 templateUrl: 'Views/Home.html'
             });
   }]);
-  
+
   app.run(function($rootScope) {
       $rootScope.isAuthenticated = false;
       $rootScope.isAdmin = false;
