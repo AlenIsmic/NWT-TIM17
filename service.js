@@ -54,6 +54,24 @@ app.factory("BookStoreService", ['$http', function($http) {
                     alert("Adding new book failed!");
                 });
         },
+
+        //This method should be used for retrieving any type of review
+        //For instance it can be author review... in that case referenceID is authorID and reviewType is 1 ( it represents authorReviewType in review_type db table )
+        getReviews: function(referenceID, reviewType)
+        {
+            return $http.get(serviceBase + 'api/reviews/'+referenceID+'/'+reviewType)
+                .error(function(){
+                    alert("Retrieving reviews failed!");
+                });
+        },
+
+        addReview: function(addReviewModel)
+        {
+            return $http.post(serviceBase + 'api/reviews', addReviewModel)
+                .error(function(){
+                    alert("Adding new review failed!");
+                });
+        },
         filterBooksByAuthor: function(ind)
                     {
                         //get books by authorID
