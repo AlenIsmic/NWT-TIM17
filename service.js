@@ -3,7 +3,7 @@
     var serviceBase = './BookStore/index.php/';
 
     var filteredBooks = [];
-    
+
     return {
         login: function(username, password)
                     {
@@ -47,18 +47,18 @@
                     alert("Adding new author failed!");
                 });
         },
-        addBook: function(createBookModel)
+        addBook: function(createBookModel, alerts)
         {
             return $http.post(serviceBase + 'api/books', createBookModel)
                 .success(function () {
 
                     //show ui.bootstrap.alert success message
-                    app.$scope.alerts.push({type:'success', msg: 'Book successfully added !'});
+                    alerts.push({type:'success', msg: 'Book successfully added !'});
                 })
                 .error(function(){
 
                     //show ui.bootstrap.alert danger message
-                    app.$scope.alerts.push({type:'danger', msg: 'Add new book failed !'});
+                    alerts.push({type:'danger', msg: 'Add new book failed !'});
                 });
         },
 
