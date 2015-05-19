@@ -39,12 +39,18 @@
                     {
                         return $http.get(serviceBase + 'api/authors');
                     },
-        addAuthor: function(createAuthorModel)
+        addAuthor: function(createAuthorModel, alerts)
         {
-            //post to create author api service
-            return $http.post(serviceBase + 'api/authors', {model: createAuthorModel})
+            return $http.post(serviceBase + 'api/authors', createAuthorModel)
+                .success(function () {
+
+                    //show ui.bootstrap.alert success message
+                    alerts.push({type:'success', msg: 'New author successfully created!'});
+                })
                 .error(function(){
-                    alert("Adding new author failed!");
+
+                    //show ui.bootstrap.alert danger message
+                    alerts.push({type:'danger', msg: 'Failed when trying to add new author !'});
                 });
         },
         addBook: function(createBookModel, alerts)

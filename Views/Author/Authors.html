@@ -5,6 +5,9 @@
             <li class="pull-right"><button class="btn-link" ng-click="addAuthor()">Add new author</button></li>
         </ul>
     </div>
+    <div>
+        <alert ng-repeat="alert in authorsAlerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+    </div>
     <div  class="sub-view" ng-show="authors != null">
         <table class="table">
             <tr ng-repeat="auth in authors | filter: filterA">
