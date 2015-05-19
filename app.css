@@ -134,6 +134,11 @@
     z-index: 1100;
 }
 
+#orderBookModal{
+    z-index: 1100;
+}
+
+
 .author-image{
     width: 30px;
     height: 30px;

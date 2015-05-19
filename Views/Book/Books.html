@@ -12,14 +12,25 @@
         <div class="col-xs-6 col-lg-4 round-corners"  ng-repeat="b in books | filter: titleFilter">
             <h2 class="book-title">{{b.title}}</h2>
             <p class="book-summary">{{b.summary}}</p>
-            <div class="book-links">
-                <button class="btn btn-primary" ng-click="showBookDetail($index)">See details >></button>
-                <button class="btn btn-info" ng-click="showReviews($index)">See reviews >></button>
+            <div>
+                <button class="btn btn-primary" ng-click="showBookDetail($index)">See details</button>
+                <button class="btn btn-info" ng-click="showReviews($index)">See reviews</button>
+                <button class="btn btn-success" ng-click="orderBook($index)">Order book</button>
             </div>
         </div>
     </div>
     <div id="addBookModal" class="modal fade">
         <div add-book-data></div>
+    </div>
+    <div id="orderBookModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <p class="modal-title">Add new author</p>
+                </div>
+                <div order-book></div>
+            </div>
+        </div>
     </div>
     <div id="showBookDetailModal" class="modal fade">
         <div class="modal-dialog">

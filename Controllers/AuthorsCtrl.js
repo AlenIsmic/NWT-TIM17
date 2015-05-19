@@ -4,6 +4,11 @@ app.controller("AuthorsCtrl", ['$scope', '$http', 'BookStoreService',
         function($scope, $http, BookStoreService){
     
             $scope.bookStoreService = BookStoreService;
+            $scope.authorsAlerts = [];
+            
+            $scope.closeAlert = function(index) {
+                $scope.authorsAlerts.splice(index, 1);
+            };
             
             BookStoreService.getAuthors().then(function (data){
                 $scope.authors = data.data;                
@@ -15,7 +20,7 @@ app.controller("AuthorsCtrl", ['$scope', '$http', 'BookStoreService',
             
             $scope.addAuthorConfirm = function(){
               //call service and pass createAuthorModel
-              var result = BookStoreService.addAuthor($scope.createAuthorModel).then(function(result){
+              var result = BookStoreService.addAuthor($scope.createAuthorModel, $scope.authorsAlerts).then(function(result){
                   if(result.statusText == "OK")
                   {
                       $scope.authors.push($scope.createAuthorModel);
@@ -33,7 +38,7 @@ app.controller("AuthorsCtrl", ['$scope', '$http', 'BookStoreService',
                 //call service that will get author's books and redirect to books view and show filtered books
                 var authorId = $scope.authors[ind].id;
                 $scope.authorsBooksCon = [];
-                BookStoreService.getBooksIdByAuthor(authorId).then(function(data){
+                BookStoreService.getBooks().then(function(data){
                     for(var i = 0; i < data.data.length; i++)
                         if(data.data[i].author === authorId)
                             $scope.authorsBooksCon.push(data.data[i]);
