@@ -4,14 +4,11 @@ app.controller("BooksCtrl", ['$scope', 'BookStoreService',
         function($scope, BookStoreService){
 
             $scope.alerts = [ ];
+            $scope.orderAlerts = [];
 
             BookStoreService.getBooks().then(function (data){
                 $scope.books = data.data;               
             });
-
-            $scope.addBook = function(){
-                $("#addBookModal").modal('show');
-            };
 
             $scope.showBookDetail = function(ind){
                 $scope.selectedBook = $scope.books[ind];
@@ -69,14 +66,14 @@ app.controller("BooksCtrl", ['$scope', 'BookStoreService',
               $("#orderBookModal").modal('show');  
             };
             
-            $scope.getDatetime = function() {
-                return (new Date).toLocaleFormat("%A, %B %e, %Y");
-            };
-
             $scope.orderBookConfirm = function(){
-                //$scope.orderBookModel.date = $scope.getDatetime();                
-                BookStoreService.orderBook($scope.orderBookModel);
+                //$scope.orderBookModel.date = $scope.getDatetime();  
+                
+                BookStoreService.orderBook($scope.orderBookModel, $scope.orderAlerts);
                 $("#orderBookModal").modal('hide');
+                $scope.orders = [];
+                $scope.orders.push($scope.orderBookModel);
+                $scope.orderBookModel = null;
             };
 }]);
 

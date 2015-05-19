@@ -18,7 +18,7 @@ angular.module('bookStoreApp')
                         '<div class="modal-footer">'+
                             '<button type="button" class="btn btn-success" ng-click="addAuthorConfirm()">Add author</button>'+
                             '<button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>'+
-                        '</div>;'
+                        '</div>'
            },
             link: function ($scope, element, attrs) {
                 element.bind('mouseover', function() {
@@ -124,12 +124,7 @@ angular.module('bookStoreApp')
                         '<div class="modal-footer">'+
                         '<button type="button" class="btn btn-success" ng-click="orderBookConfirm()">Order book</button>'+
                         '<button type="button" class="btn btn-success" data-dismiss="modal">Close</button>'+
-                        '</div>'
-            },
-            link: function ($scope, element, attrs) {
-                element.bind('mouseover', function() {
-                    element.css('cursor', 'pointer');
-                });
+                        '</div>';
             }
-        }
+        };
     });

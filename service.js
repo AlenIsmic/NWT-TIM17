@@ -1,4 +1,4 @@
-﻿app.factory("BookStoreService", ['$http', function($http) {
+﻿﻿app.factory("BookStoreService", ['$http', function($http) {
     
     var serviceBase = './BookStore/index.php/';
 
@@ -96,11 +96,18 @@
                 });
         },
  
-        orderBook: function(orderBookModel)
+        orderBook: function(orderBookModel, alerts)
         {
             return $http.post(serviceBase + 'api/orders', orderBookModel)
+                .success(function () {
+
+                    //show ui.bootstrap.alert success message
+                    alerts.push({type:'success', msg: 'Book successfully ordered !'});
+                })
                 .error(function(){
-                    alert("Adding new order failed!");
+
+                    //show ui.bootstrap.alert danger message
+                    alerts.push({type:'danger', msg: 'Ordering book failed !'});
                 });
         },
 
