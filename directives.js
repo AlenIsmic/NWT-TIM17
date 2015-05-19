@@ -92,6 +92,9 @@ angular.module('bookStoreApp')
             restrict: 'EA',
             template:function(elem,attrs) {
                 return '<div class="modal-body">'+
+                    '<div>'+
+                        '<alert ng-repeat="alert in reviewAlerts" type="{{alert.type}}" close="closeReviewAlert($index)">{{alert.msg}}</alert>'+
+                    '</div>'+
                     '<input type="text" ng-model="addReviewModel.content" placeholder="Add comment" style="width: 80%; height: 60px">'+
                     'Rate:  <select ng-model="addReviewModel.rate">'+
                                 '<option value="1">1</option>'+

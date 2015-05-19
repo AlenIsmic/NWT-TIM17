@@ -1,6 +1,10 @@
 <div ng-controller="DashboardCtrl" class="sub-view">
-    <div id="charts" style="width: 500px; height: 500px;">
+    <div id="bookGenreChart" style="width: 500px; height: 500px; border: 1px; float: left">
         <br><label>Books by genre</label><br>
         <canvas id="pie" class="chart chart-pie" data="data" labels="labels"></canvas>
+    </div>
+    <div id="bookCommentChart" style="width: 500px; height: 500px; float: right">
+        <br><label>Books by number of comments</label><br>
+        <canvas id="doughnut" class="chart chart-doughnut" data="numOfComments" labels="topBooks" colours = "colours"></canvas>
     </div>
 </div>

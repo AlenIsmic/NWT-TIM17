@@ -72,11 +72,18 @@
                 });
         },
 
-        addReview: function(addReviewModel)
+        addReview: function(addReviewModel, reviewAlerts)
         {
             return $http.post(serviceBase + 'api/reviews', addReviewModel)
+                .success(function () {
+
+                    //show ui.bootstrap.alert success message
+                    reviewAlerts.push({type:'success', msg: 'Review successfully added !'});
+                })
                 .error(function(){
-                    alert("Adding new review failed!");
+
+                    //show ui.bootstrap.alert danger message
+                    reviewAlerts.push({type:'danger', msg: 'Add new Review failed ! Please try again.'});
                 });
         },
         filterBooksByAuthor: function(ind)

@@ -5,6 +5,8 @@ app.controller("BooksCtrl", ['$scope', 'BookStoreService',
 
             $scope.alerts = [ ];
 
+            $scope.reviewAlerts = [ ];
+
             BookStoreService.getBooks().then(function (data){
                 $scope.books = data.data;               
             });
@@ -34,6 +36,10 @@ app.controller("BooksCtrl", ['$scope', 'BookStoreService',
                 $scope.alerts.splice(index, 1);
             };
 
+            $scope.closeReviewAlert = function(index) {
+                $scope.reviewAlerts.splice(index, 1);
+            };
+
             $scope.showReviews = function(ind){
                 $scope.bookReviews = null;
                 $scope.selectedBook = $scope.books[ind];
@@ -56,7 +62,7 @@ app.controller("BooksCtrl", ['$scope', 'BookStoreService',
                 //ReviewType = 2 represents Book Review Type -- TODO: SWITCH TO ENUM
                 $scope.addReviewModel.type = 2;
 
-                BookStoreService.addReview($scope.addReviewModel);
+                BookStoreService.addReview($scope.addReviewModel, $scope.reviewAlerts);
 
                 $scope.bookReviews.push($scope.addReviewModel);
                 $scope.addReviewModel = null;
