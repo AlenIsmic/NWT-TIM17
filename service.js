@@ -9,6 +9,10 @@
                     {
                         return $http.get(serviceBase + 'api/login/'+username+'/'+password);
                     },
+        checkIfAdmin : function(username)
+                    {
+                        return $http.get(serviceBase + 'api/getLoggedUser/' + username);
+                    },
         sendRegistrationRequest: function(registerModel)
                     {
                         return $http.post(serviceBase + 'api/users', registerModel)

@@ -70,6 +70,7 @@ return array(
                 array('api/create', 'pattern'=>'api/<model:\w+>', 'verb'=>'POST'),
                 array('api/login', 'pattern'=>'api/login/<un:\w+>/<pw:\w+>', 'verb'=>'GET'),
                 array('api/fetchReview', 'pattern'=>'api/reviews/<ref:\d+>/<type:\d+>', 'verb'=>'GET'),
+                array('api/getLoggedUser', 'pattern'=>'api/getLoggedUser/<un:\w+>', 'verb'=>'GET'),
                 array('api/bookStatisticsByGenre', 'pattern'=>'api/statistics/book/genre', 'verb'=>'GET'),
                 // Other controllers
                 '<controller:\w+>/<action:\w+>'=>'<controller>/<action>',

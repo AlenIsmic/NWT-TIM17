@@ -321,6 +321,13 @@ class ApiController extends Controller
         else
             $this->_sendResponse(200, CJSON::encode($model));
     }
+    
+    public function actionGetLoggedUser()
+    {
+        $user = User::model()->findAllByAttributes(array('name'=>$_GET['un'] ));
+
+        $this->_sendResponse(200, CJSON::encode($user));
+    }
 
     public function actionFetchReview()
     {

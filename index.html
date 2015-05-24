@@ -53,6 +53,7 @@
                     <li><a href="./index.html#/Reviews">Reviews</a></li>
                     <li><a href="./index.html#/Dashboard">Dashboard</a></li>
                     <li><a href="./index.html#/ContactUs">Contact Us</a></li>
+                    <li><a ng-show="isLoggedAdmin" href="./index.html#/ManageUsers">Manage users</a></li>
                     <li class="navbar-right">
                         <a ng-show="!isAuthenticated" href="./index.html#/Login">Login</a>
                         <a ng-show="isAuthenticated" href="#" ng-click="Logout()">Logout</a>
