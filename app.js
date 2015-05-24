@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('bookStoreApp', ['ngRoute', 'ui.bootstrap', 'chart.js'])
+var app = angular.module('bookStoreApp', ['ngRoute', 'ui.bootstrap', 'chart.js', 'ngCookies'])
     .config(['$routeProvider',
         function($routeProvider) {
             $routeProvider
@@ -41,10 +41,7 @@ var app = angular.module('bookStoreApp', ['ngRoute', 'ui.bootstrap', 'chart.js']
             .otherwise({
                 templateUrl: 'Views/Home.html'
             });
-  }]);
+        }
+    ]);
 
-  app.run(function($rootScope) {
-      $rootScope.isAuthenticated = false;
-      $rootScope.isAdmin = false;
-});
   

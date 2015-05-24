@@ -309,7 +309,7 @@ class ApiController extends Controller
             $this->_sendResponse(500, 'Error: Parameter <b>pw</b> is missing' );
 
         // $model = User::model()->findByPk($_GET['id']);
-        $model = User::model()->findByAttributes(array('email'=>$_GET['un']));
+        $model = User::model()->findByAttributes(array('name'=>$_GET['un']));
 
         // Did we find the requested User? If not, raise an error
         if(is_null($model))

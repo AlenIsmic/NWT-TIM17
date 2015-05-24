@@ -7,21 +7,15 @@
     return {
         login: function(username, password)
                     {
-                        //TODO : call API controller to find the user in the db
-                        return $http.post(serviceBase + 'api/login/', username, password);
+                        return $http.get(serviceBase + 'api/login/'+username+'/'+password);
                     },
         sendRegistrationRequest: function(registerModel)
                     {
-                        return $http({
-                            method : 'POST',
-                            url : serviceBase + 'api/users',
-                            data : registerModel
-                        }).success(function(){
-                            $http.post('/mail', registerModel.email);
-                            
-                        }).error(function(){
-                            alert("Greška u procesiranju zahtjeva");
-                        });
+                        return $http.post(serviceBase + 'api/users', registerModel)
+                                .success(function () {
+                                })
+                                .error(function(){
+                                });
                     },
         getBooks: function()
                     {
@@ -43,12 +37,10 @@
         {
             return $http.post(serviceBase + 'api/authors', createAuthorModel)
                 .success(function () {
-
                     //show ui.bootstrap.alert success message
                     alerts.push({type:'success', msg: 'New author successfully created!'});
                 })
                 .error(function(){
-
                     //show ui.bootstrap.alert danger message
                     alerts.push({type:'danger', msg: 'Failed when trying to add new author !'});
                 });
