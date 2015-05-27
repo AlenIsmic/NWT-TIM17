@@ -25,7 +25,7 @@ app.controller('mainController', ['$scope', '$cookieStore', '$location', '$rootS
             
             BookStoreService.login(username, password)
                     .success(function () {
-                        alert('Successfully logged in!');
+                        //alert('Successfully logged in!');
                         //check if user is also admin
                         BookStoreService.checkIfAdmin(username).then(function(result){
                             if(result.data[0].admin === '1')

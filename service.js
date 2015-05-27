@@ -21,17 +21,24 @@
                                 .error(function(){
                                 });
                     },
+        getUsers: function()
+                    {
+                        return $http.get(serviceBase + 'api/users');
+                    },
         getBooks: function()
                     {
-                        filteredBooks = [];
                         return $http.get(serviceBase + 'api/books');
                     },
         addBooksByAuthor: function(addBookModel)
                     {
-                        return $http.post(serviceBase + 'api/books', {model: addBookModel})
+                        return $http.post(serviceBase + 'api/books', addBookModel)
                                 .error(function(){
                                     alert("Adding new book failed!");
                         });
+                    },
+        getBookById: function(bookIndex)
+                    {
+                        return $http.get(serviceBase + 'api/books/'+bookIndex);         
                     },
         getAuthors: function()
                     {
@@ -88,10 +95,9 @@
                     reviewAlerts.push({type:'danger', msg: 'Add new Review failed ! Please try again.'});
                 });
         },
-        filterBooksByAuthor: function(ind)
+        getBooksAndAuthors: function(ind)
                     {
-                        //get books by authorID
-                        filteredBooks = $http.get(serviceBase + 'api/booksAuthors/');
+                        return $http.get(serviceBase + 'api/booksAuthors/');
                     },
         getFilteredBooks : function()
                     {

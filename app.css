@@ -1,4 +1,7 @@
 /* app css stylesheet */
+.mainTitle{
+    font-family: 'Gochi Hand', cursive;
+}
 #title_div{
     background: wheat;
     margin-left: auto;

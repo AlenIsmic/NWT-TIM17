@@ -1,4 +1,3 @@
-
 'use strict';
 app.controller("DashboardCtrl", ['$scope', 'BookStoreService',
     function($scope, BookStoreService){
