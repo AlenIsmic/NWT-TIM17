@@ -7,6 +7,10 @@
         <br><label>Books by price</label><br>
         <canvas id="pricePie" class="chart chart-pie" data="priceData" labels="priceLabels"></canvas>
     </div>
+    <div id="bookPriceChart" style="width: 500px; height: 500px; border: 1px; float: right">
+        <br><label>Books by price, shown in doughnut</label><br>
+        <canvas id="pricePie" class="chart chart-doughnut" data="priceData" labels="priceLabels"></canvas>
+    </div>
     <div id="bookCommentChart" style="width: 500px; height: 500px; float: left">
         <br><label>Books by number of comments</label><br>
         <canvas id="doughnut" class="chart chart-doughnut" data="numOfComments" labels="topBooks" colours = "colours"></canvas>
