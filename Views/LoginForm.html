@@ -3,11 +3,21 @@
     <table class="table">
         <tr>
             <th>Enter username </th>
-            <td> <input type="text" ng-model="loginModel.loginUsername"></td>
+            <td>
+                <div class="inner-addon left-addon">
+                    <i class="glyphicon glyphicon-user"></i>      
+                    <input type="text" class="form-control" ng-model="loginModel.loginUsername">
+                </div>
+            </td>
         </tr>
         <tr>
             <th>Enter password </th>
-            <td><input type="password" ng-model="loginModel.loginPsw"></td>
+            <td>
+                <div class="inner-addon left-addon">
+                    <i class="glyphicon glyphicon-asterisk"></i>      
+                    <input type="password" class="form-control" ng-model="loginModel.loginPsw">
+                </div>
+            </td>
         </tr>
         <tr>
             <td></td>
