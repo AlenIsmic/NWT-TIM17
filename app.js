@@ -38,6 +38,10 @@ var app = angular.module('bookStoreApp', ['ngRoute', 'ui.bootstrap', 'chart.js',
             {
                 templateUrl: 'Views/Dashboard.html'
             })
+            .when('/ManageUsers',
+            {
+                templateUrl: 'Views/ManageUsers.html'                
+            })
             .otherwise({
                 templateUrl: 'Views/Home.html'
             });

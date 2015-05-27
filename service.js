@@ -126,6 +126,13 @@
                 .error(function(){
                     alert("getBookNumberByGenre failed!");
                 });
+        },
+        getBookNumberByPrice: function()
+        {
+            return $http.get(serviceBase + 'api/statistics/book/price')
+                .error(function(){
+                    alert("Something went wrong!");
+                });
         }
     };
     

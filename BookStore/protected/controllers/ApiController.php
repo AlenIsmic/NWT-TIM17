@@ -347,6 +347,24 @@ class ApiController extends Controller
 
         $this->_sendResponse(200, CJSON::encode($obj));
     }
+    
+    public function actionBookByPrices()
+    {
+        $under10 = Book::model()->count(array(
+            'condition'=>'price < 10'
+        ));
+        $tenToTwenty = Book::model()->count(array(
+            'condition'=>'price >= 10 && price < 20'
+        ));
+        $overTwenty = Book::model()->count(array(
+            'condition'=>'price > 20'
+        ));
+        
+        $obj = (object) array('Cheap' => $under10, 'Medium' => $tenToTwenty, 'Expensive' => $overTwenty);
+
+        $this->_sendResponse(200, CJSON::encode($obj));
+    }
+    
     // Private functions
 
     private function _sendResponse($status = 200, $body = '', $content_type = 'text/html')

@@ -72,6 +72,7 @@ return array(
                 array('api/fetchReview', 'pattern'=>'api/reviews/<ref:\d+>/<type:\d+>', 'verb'=>'GET'),
                 array('api/getLoggedUser', 'pattern'=>'api/getLoggedUser/<un:\w+>', 'verb'=>'GET'),
                 array('api/bookStatisticsByGenre', 'pattern'=>'api/statistics/book/genre', 'verb'=>'GET'),
+                array('api/bookByPrices', 'pattern'=>'api/statistics/book/price', 'verb'=>'GET'),
                 // Other controllers
                 '<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
 
