@@ -1,16 +1,19 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
-</html>
+<div ng-controller="ManageUsersCtrl" class="sub-view">
+    <div  class="sub-view">
+        <table class="table">
+            <tr ng-repeat="user in users">
+                <td class="col-md-4 banned-user" ng-show="user.isUserBanned == 1"><strong>{{user.name}}</strong></td>
+                <td class="col-md-4" ng-show='user.isUserBanned == 0'>{{user.name}}</td>
+                <td class="col-md-1" ng-show='user.isUserBanned == 1'>
+                    <input type="button" class="btn-success" ng-click="unbanUser($index)" value='Unban user'>
+                </td>
+                <td class="col-md-1" ng-show='user.isUserBanned == 0'>
+                    <input type="button" class="btn-danger" ng-click="banUser($index)" value="Ban user">
+                </td>
+                <td class="col-md-1" ng-show='user.isUserBanned == 0'>
+                    <input type="button" class="btn-success" ng-click="makeAdmin($index)" value="Make user admin">
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

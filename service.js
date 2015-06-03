@@ -25,6 +25,18 @@
                     {
                         return $http.get(serviceBase + 'api/users');
                     },
+        banUser: function(userId)
+                    {
+                        
+                    },
+        unbanUser: function(userId)
+                    {
+                        
+                    },
+        makeAdmin: function(userId)
+                    {
+                        
+                    },
         getBooks: function()
                     {
                         return $http.get(serviceBase + 'api/books');

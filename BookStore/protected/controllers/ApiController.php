@@ -310,10 +310,13 @@ class ApiController extends Controller
 
         // $model = User::model()->findByPk($_GET['id']);
         $model = User::model()->findByAttributes(array('name'=>$_GET['un']));
-
+        
         // Did we find the requested User? If not, raise an error
         if(is_null($model))
             $this->_sendResponse(404, 'No User found with username '.$_GET['un']);
+        
+        if($model->isUserBanned == 1)
+            $this->_sendResponse (404, 'User '.$_GET['un'].' is banned!');
 
         if($model->password != $_GET['pw'])
             $this->_sendResponse(404, 'Wrong password '.$_GET['un']);

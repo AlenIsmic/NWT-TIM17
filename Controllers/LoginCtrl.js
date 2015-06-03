@@ -10,7 +10,7 @@ app.controller("LoginCtrl", ['$scope', '$http', '$rootScope', 'BookStoreService'
     
     $scope.loginMe = function(){
         
-        if($scope.loginModel.loginPsw == "" || $scope.loginModel.loginUsername == "")
+        if($scope.loginModel == null || $scope.loginModel.loginPsw == "" || $scope.loginModel.loginUsername == "")
             alert("Morate unijeti sve podatke !");
         else
         {

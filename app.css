@@ -180,3 +180,9 @@
 
 /* add padding  */
 .left-addon input  { padding-left:  30px; }
+
+
+.banned-user
+{
+    color: red;
+}

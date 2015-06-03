@@ -3,6 +3,7 @@
 app.controller('mainController', ['$scope', '$cookieStore', '$location', '$rootScope', 'BookStoreService', 
     function($scope, $cookieStore, $location, $rootScope, BookStoreService){
         $scope.user = {username: "", password: ""};
+        $scope.mainAlerts = [];
         
         $rootScope.cookieUser = $cookieStore.get('BookStore') || {};
         if ($rootScope.cookieUser.currentUser) {
@@ -20,7 +21,10 @@ app.controller('mainController', ['$scope', '$cookieStore', '$location', '$rootS
         
         $scope.loginMe = function()
         {
-            var username = $scope.loginModel.loginUsername;
+            if($scope.loginModel == null || $scope.loginModel.loginUsername == "" || $scope.loginModel.loginPsw == "")
+                $scope.mainAlerts.push({type:'danger', msg: 'You must enter all fields!'});
+            else{
+                var username = $scope.loginModel.loginUsername;
             var password = $scope.loginModel.loginPsw;
             
             BookStoreService.login(username, password)
@@ -46,11 +50,13 @@ app.controller('mainController', ['$scope', '$cookieStore', '$location', '$rootS
                             $location.path('/index.html');
                         });                      
                     })
-                    .error(function(){
-                        alert('Login failed!');
+                    .error(function(data){
+                        $scope.mainAlerts.push({type:'danger', msg: 'Login failed. Please try again. ' + data});
                         $scope.loginModel.loginPsw = '';
                         $scope.loginModel.loginUsername = '';
                     });
+            }
+            
         };
         
         $scope.Logout = function(){
@@ -59,4 +65,8 @@ app.controller('mainController', ['$scope', '$cookieStore', '$location', '$rootS
             $rootScope.isAuthenticated = false;
             $rootScope.isLoggedAdmin = false;
         };        
+        
+        $scope.closeAlert = function(index) {
+                $scope.mainAlerts.splice(index, 1);
+            };
 }]);
