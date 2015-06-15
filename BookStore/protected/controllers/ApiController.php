@@ -77,7 +77,7 @@ class ApiController extends Controller
             $this->_sendResponse(200, CJSON::encode($rows));
         }
     }
-        //GET - Alen Ismic
+    //GET - Alen Ismic
     public function actionView()
     {
         // Check if id was submitted via GET
@@ -88,8 +88,8 @@ class ApiController extends Controller
         {
             // Find respective model
             case 'books':
-                $model = Book::model()->findByPk($_GET['id']); 
-               break;
+                $model = Book::model()->findByPk($_GET['id']);
+                break;
             case 'users':
                 $model = User::model()->findByPk($_GET['id']);
                 break;
@@ -244,7 +244,7 @@ class ApiController extends Controller
         else
             // prepare the error $msg
             $msg ="Update failed";
-            $this->_sendResponse(500, $msg );
+        $this->_sendResponse(500, $msg );
     }
 
     //DELETE - Merima Hadzic
@@ -289,7 +289,7 @@ class ApiController extends Controller
         // Delete the model
         $num = $model->delete();
         if($num>0)
-            $this->_sendResponse(200, $num); 
+            $this->_sendResponse(200, $num);
         else
             $this->_sendResponse(500,
                 sprintf("Error: Couldn't delete model <b>%s</b> with ID <b>%s</b>.",
@@ -309,17 +309,125 @@ class ApiController extends Controller
             $this->_sendResponse(500, 'Error: Parameter <b>pw</b> is missing' );
 
         // $model = User::model()->findByPk($_GET['id']);
-        $model = User::model()->findByAttributes(array('email'=>$_GET['un']));
+        $model = User::model()->findByAttributes(array('name'=>$_GET['un']));
 
         // Did we find the requested User? If not, raise an error
         if(is_null($model))
             $this->_sendResponse(404, 'No User found with username '.$_GET['un']);
+
+        if($model->isUserBanned == 1)
+            $this->_sendResponse (404, 'User '.$_GET['un'].' is banned!');
 
         if($model->password != $_GET['pw'])
             $this->_sendResponse(404, 'Wrong password '.$_GET['un']);
 
         else
             $this->_sendResponse(200, CJSON::encode($model));
+    }
+
+    public function actionGetLoggedUser()
+    {
+        $user = User::model()->findAllByAttributes(array('name'=>$_GET['un'] ));
+
+        $this->_sendResponse(200, CJSON::encode($user));
+    }
+
+    public function actionCheckIfExists(){
+
+        $model = User::model()->findByAttributes(array('name'=>$_GET['un']));
+
+        // Did we find the requested User? If not, raise an error
+        if(is_null($model))
+            $this->_sendResponse(200, 'No User found with username '.$_GET['un']);
+        else
+            $this->_sendResponse(202, 'Username already exists');
+    }
+
+    public function actionGetBooksForAuthor()
+    {
+        $books = Book::model()->findAllByAttributes(array('author'=>$_GET['id'] ));
+
+        $this->_sendResponse(200, CJSON::encode($books));
+    }
+
+    public function actionBanUser()
+    {
+        $model = User::model()->findByPk($_GET['id']);
+
+        // Did we find the requested model? If not, raise an error
+        if($model === null)
+            $this->_sendResponse(400,
+                sprintf("Error: Didn't find any model <b>%s</b> with ID <b>%s</b>.",
+                    $_GET['model'], $_GET['id']) );
+
+        if($_GET['isBan'] == 1)
+            $model->isUserBanned = 1;
+        else {
+            $model->isUserBanned = 0;
+        }
+
+        // Try to save the model
+        if($model->save())
+            $this->_sendResponse(200, "Everything is fine");
+        else
+            // prepare the error $msg
+            $msg ="Update failed";
+        $this->_sendResponse(500, $msg );
+    }
+
+    public function actionMakeAdmin()
+    {
+        $model = User::model()->findByPk($_GET['id']);
+
+        // Did we find the requested model? If not, raise an error
+        if($model === null)
+            $this->_sendResponse(400,
+                sprintf("Error: Didn't find any model <b>%s</b> with ID <b>%s</b>.",
+                    $_GET['model'], $_GET['id']) );
+
+        $model->admin = 1;
+
+        // Try to save the model
+        if($model->save())
+            $this->_sendResponse(200, "Everything is fine");
+        else
+            // prepare the error $msg
+            $msg ="Update failed";
+        $this->_sendResponse(500, $msg );
+    }
+
+    public function actionGetHomepageBooks()
+    {
+        $books = Book::model()->findAllByAttributes(array('isOnHomepage'=>'1' ));
+
+        $this->_sendResponse(200, CJSON::encode($books));
+    }
+
+    public function actionSetHomepageBook()
+    {
+        // Parse the PUT parameters. This didn't work: parse_str(file_get_contents('php://input'), $put_vars);
+        //$json = file_get_contents('php://input'); //$GLOBALS['HTTP_RAW_POST_DATA'] is not preferred: http://www.php.net/manual/en/ini.core.php#ini.always-populate-raw-post-data
+        //$put_vars = CJSON::decode($json,true);  //true means use associative array
+
+        $oldModel = Book::model()->findByPk($_GET["oldId"]);
+        $model = Book::model()->findByPk($_GET['newId']);
+
+        // Did we find the requested model? If not, raise an error
+        if($model === null)
+            $this->_sendResponse(400,
+                sprintf("Error: Didn't find any model <b>%s</b> with ID <b>%s</b>.",
+                    $_GET['model'], $_GET['id']) );
+
+        $model->isOnHomepage = 1;
+        $oldModel->isOnHomepage = 0;
+
+        // Try to save the model
+        if($oldModel->save() && $model->save())
+            $this->_sendResponse(200, "Everything is fine");
+        else
+            // prepare the error $msg
+            $msg ="Update failed";
+        $this->_sendResponse(500, $msg );
     }
 
     public function actionFetchReview()
@@ -340,6 +448,24 @@ class ApiController extends Controller
 
         $this->_sendResponse(200, CJSON::encode($obj));
     }
+
+    public function actionBookByPrices()
+    {
+        $under10 = Book::model()->count(array(
+            'condition'=>'price < 10'
+        ));
+        $tenToTwenty = Book::model()->count(array(
+            'condition'=>'price >= 10 && price < 20'
+        ));
+        $overTwenty = Book::model()->count(array(
+            'condition'=>'price > 20'
+        ));
+
+        $obj = (object) array('Cheap' => $under10, 'Medium' => $tenToTwenty, 'Expensive' => $overTwenty);
+
+        $this->_sendResponse(200, CJSON::encode($obj));
+    }
+
     // Private functions
 
     private function _sendResponse($status = 200, $body = '', $content_type = 'text/html')

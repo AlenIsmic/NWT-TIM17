@@ -1,4 +1,15 @@
 /* app css stylesheet */
+body > div{
+    background-color: #ccffcc;
+}
+
+html{
+    background-color: #ccffcc;
+}
+
+.mainTitle{
+    font-family: 'Gochi Hand', cursive;
+}
 #title_div{
     background: wheat;
     margin-left: auto;
@@ -12,9 +23,8 @@
 }
 
 .sub-view{
-    margin-top: 10px;
-    max-width: 90%;
-    margin-left: 55px;
+    margin-top: 20px;
+    margin-left: 45px !important;
 }
 
 #other-menu{
@@ -24,32 +34,32 @@
 }
 
 .menu {
-  list-style: none;
-  border-bottom: 0.1em solid black;
-  margin-bottom: 2em;
-  padding: 0 0 0.5em;
+    list-style: none;
+    border-bottom: 0.1em solid black;
+    margin-bottom: 2em;
+    padding: 0 0 0.5em;
 }
 
 .menu:before {
-  content: "[";
+    content: "[";
 }
 
 .menu:after {
-  content: "]";
+    content: "]";
 }
 
 .menu > li {
-  display: inline;
+    display: inline;
 }
 
 .menu > li:before {
-  content: "|";
-  padding-right: 0.3em;
+    content: "|";
+    padding-right: 0.3em;
 }
 
 .menu > li:nth-child(1):before {
-  content: "";
-  padding: 0;
+    content: "";
+    padding: 0;
 }
 
 #mainmenu
@@ -62,30 +72,30 @@
 
 #mainmenu ul
 {
-	padding:6px 20px 5px 20px;
-	margin:0px;
+    padding:6px 20px 5px 20px;
+    margin:0px;
 }
 
 #mainmenu ul li
 {
-	display: inline;
+    display: inline;
 }
 
 #mainmenu ul li a
 {
-	color:#ffffff;
-	background-color:transparent;
-	font-size:12px;
-	font-weight:bold;
-	text-decoration:none;
-	padding:5px 8px;
+    color:#ffffff;
+    background-color:transparent;
+    font-size:12px;
+    font-weight:bold;
+    text-decoration:none;
+    padding:5px 8px;
 }
 
 #mainmenu ul li a:hover, #mainmenu ul li.active a
 {
-	color: #6399cd;
-	background-color:#EFF4FA;
-	text-decoration:none;
+    color: #6399cd;
+    background-color:#EFF4FA;
+    text-decoration:none;
 }
 
 #submenu
@@ -101,6 +111,7 @@
 
 .register-form{
     margin-top: 50px;
+    margin-left: 300px;
     width: 40% !important;
 }
 
@@ -121,7 +132,6 @@
     z-index: 1100;
 }
 
-
 #addBookByAuthorModal{
     z-index: 1100;
 }
@@ -138,6 +148,14 @@
     z-index: 1100;
 }
 
+.contact-modal .modal-dialog{
+    width: 300px;
+}
+
+#showHomepageBookDetailModal
+{
+    z-index: 1100;
+}
 
 .author-image{
     width: 30px;
@@ -146,9 +164,9 @@
 
 .round-corners {
     border-radius: 25px;
-    border: 1px #6399cd solid ; 
+    border: 1px #6399cd solid ;
     width: 340px !important;
-    height: 150px; 
+    height: 150px;
     margin: 2px 5px 2px 5px;
 }
 
@@ -161,4 +179,52 @@
 
 .book-links{
     margin-left: 30px;
+}
+
+.inner-addon {
+    position: relative;
+}
+
+.inner-addon .glyphicon {
+    position: absolute;
+    padding: 10px;
+    pointer-events: none;
+}
+
+.left-addon .glyphicon  { left:  0px;}
+
+/* add padding  */
+.left-addon input  { padding-left:  30px; }
+
+
+.banned-user
+{
+    color: red;
+}
+
+#showOtherBooks .modal-dialog
+{
+    width: 350px;
+}
+
+#showAuthorBooksModal .modal-dialog
+{
+    width: 450px;
+}
+
+#content-main > div > div > h2
+{
+    margin-top: 40px !important;
+    margin-bottom: 40px !important;
+    color: blue;
+}
+
+.homepage-book-titles
+{
+    color: #204d74;
+}
+
+.homepage-books
+{
+    background-color: burlywood;
 }
