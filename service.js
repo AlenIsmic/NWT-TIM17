@@ -41,6 +41,14 @@
                     {
                         return $http.get(serviceBase + 'api/books');
                     },
+        getBooksHomepage: function()
+                    {
+                        return $http.get(serviceBase + 'api/getHomepageBooks');
+                    },
+        updateHomepage: function(oldId, newId)
+                    {
+                        return $http.put(serviceBase + 'api/setHomepageBook/' + oldId + '/' + newId);
+                    },
         addBooksByAuthor: function(addBookModel)
                     {
                         return $http.post(serviceBase + 'api/books', addBookModel)
@@ -107,9 +115,9 @@
                     reviewAlerts.push({type:'danger', msg: 'Add new Review failed ! Please try again.'});
                 });
         },
-        getBooksAndAuthors: function(ind)
+        getBooksAndAuthors: function(authorID)
                     {
-                        return $http.get(serviceBase + 'api/booksAuthors/');
+                        return $http.get(serviceBase + 'api/getBooksForAuthor/' + authorID);
                     },
         getFilteredBooks : function()
                     {

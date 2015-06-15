@@ -331,6 +331,47 @@ class ApiController extends Controller
 
         $this->_sendResponse(200, CJSON::encode($user));
     }
+    
+    public function actionGetBooksForAuthor()
+    {
+        $books = Book::model()->findAllByAttributes(array('author'=>$_GET['id'] ));
+
+        $this->_sendResponse(200, CJSON::encode($books));
+    }
+    
+    public function actionGetHomepageBooks()
+    {
+        $books = Book::model()->findAllByAttributes(array('isOnHomepage'=>'1' ));
+
+        $this->_sendResponse(200, CJSON::encode($books));
+    }
+    
+    public function actionSetHomepageBook()
+    {
+        // Parse the PUT parameters. This didn't work: parse_str(file_get_contents('php://input'), $put_vars);
+        //$json = file_get_contents('php://input'); //$GLOBALS['HTTP_RAW_POST_DATA'] is not preferred: http://www.php.net/manual/en/ini.core.php#ini.always-populate-raw-post-data
+        //$put_vars = CJSON::decode($json,true);  //true means use associative array
+
+        $oldModel = Book::model()->findByPk($_GET["oldId"]);
+        $model = Book::model()->findByPk($_GET['newId']);
+                
+        // Did we find the requested model? If not, raise an error
+        if($model === null)
+            $this->_sendResponse(400,
+                sprintf("Error: Didn't find any model <b>%s</b> with ID <b>%s</b>.",
+                    $_GET['model'], $_GET['id']) );
+
+        $model->isOnHomepage = 1;
+        $oldModel->isOnHomepage = 0;
+        
+        // Try to save the model
+        if($oldModel->save() && $model->save())
+            $this->_sendResponse(200, "Everything is fine");
+        else
+            // prepare the error $msg
+            $msg ="Update failed";
+            $this->_sendResponse(500, $msg );
+    }
 
     public function actionFetchReview()
     {

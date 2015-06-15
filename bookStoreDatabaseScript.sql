@@ -56,6 +56,7 @@ CREATE TABLE IF NOT EXISTS `tbl_book` (
   `summary` text,
   `price` double NOT NULL,
   `available` int(11) DEFAULT NULL,
+  `isOnHomepage` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `unique_id` (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;

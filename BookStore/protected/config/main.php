@@ -63,6 +63,9 @@ return array(
                 'posts/<tag:.*?>'=>'post/index',
 
                 // REST patterns
+                array('api/getHomepageBooks', 'pattern'=>'api/getHomepageBooks', 'verb'=>'GET'),
+                array('api/setHomepageBook', 'pattern'=>'api/setHomepageBook/<oldId:\d+>/<newId:\d+>', 'verb'=>'PUT'),
+                array('api/getBooksForAuthor', 'pattern'=>'api/getBooksForAuthor/<id:\d+>', 'verb'=>'GET'),
                 array('api/list', 'pattern'=>'api/<model:\w+>', 'verb'=>'GET'),
                 array('api/view', 'pattern'=>'api/<model:\w+>/<id:\d+>', 'verb'=>'GET'),
                 array('api/update', 'pattern'=>'api/<model:\w+>/<id:\d+>', 'verb'=>'PUT'),

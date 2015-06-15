@@ -141,6 +141,11 @@
     z-index: 1100;
 }
 
+#showHomepageBookDetailModal
+{
+    z-index: 1100;
+}
+
 
 .author-image{
     width: 30px;
@@ -185,4 +190,31 @@
 .banned-user
 {
     color: red;
+}
+
+#showOtherBooks .modal-dialog  
+{
+    width: 350px;
+}
+
+#showAuthorBooksModal .modal-dialog  
+{
+    width: 450px;
+}
+
+#content-main > div > div > h2
+{
+    margin-top: 40px !important;
+    margin-bottom: 40px !important;
+    color: blue;
+}
+
+.homepage-book-titles
+{
+    color: #204d74;
+}
+
+.homepage-books
+{
+      background-color: burlywood;
 }

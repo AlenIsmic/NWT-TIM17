@@ -59,9 +59,9 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-body">
-                <div>{{detailedAuthorBooks.name}}</div>
+                <div>{{selectedAuthorName}}</div>
                 <ul>
-                    <li ng-repeat="b in detailedAuthorBooks.books">
+                    <li ng-repeat="b in authorsBooksCon">
                         {{b.title}}
                     </li>
                 </ul>
