@@ -9,22 +9,22 @@ app.controller("ManageUsersCtrl", ['$scope', '$http', 'BookStoreService',
                 $scope.users = data.data;                
             });    
             
-            function banUser(id){
+            $scope.banUser = function(id){
                 var userId = $scope.users[id].id;
-              BookStoreService.banUser(userId).then(function(){
-                  
-              });
+                BookStoreService.banUser(userId).then(function(){
+                    $scope.users[id].isUserBanned = 1;
+                });
             };
-            function unbanUser(id){
+            $scope.unbanUser = function(id){
                 var userId = $scope.users[id].id;
-              BookStoreService.unbanUser(userId).then(function(){
-                  
-              });
+                BookStoreService.unbanUser(userId).then(function(){
+                    $scope.users[id].isUserBanned = 0;
+                });
             };
-            function makeAdmin(id){
+            $scope.makeAdmin = function(id){
                 var userId = $scope.users[id].id;
-              BookStoreService.makeAdmin(userId).then(function(){
-                  
-              });
+                BookStoreService.makeAdmin(userId).then(function(){
+                    
+                });
             };
 }]);

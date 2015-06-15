@@ -10,7 +10,7 @@
                 <td class="col-md-1" ng-show='user.isUserBanned == 0'>
                     <input type="button" class="btn-danger" ng-click="banUser($index)" value="Ban user">
                 </td>
-                <td class="col-md-1" ng-show='user.isUserBanned == 0'>
+                <td class="col-md-1" ng-show='user.isUserBanned == 0 && user.admin == 0'>
                     <input type="button" class="btn-success" ng-click="makeAdmin($index)" value="Make user admin">
                 </td>
             </tr>

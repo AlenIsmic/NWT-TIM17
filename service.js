@@ -13,6 +13,20 @@
                     {
                         return $http.get(serviceBase + 'api/getLoggedUser/' + username);
                     },
+        checkIfUserExists: function(username)
+                    {
+                        return $http.get(serviceBase + 'api/checkIfExists/' + username);
+                    },
+        createUser: function(registerModel)
+                    {
+                        return $http.post(serviceBase + 'api/users', registerModel)
+                            .success(function () {
+                                
+                            })
+                            .error(function(){
+                                
+                            });
+                    },                    
         sendRegistrationRequest: function(registerModel)
                     {
                         return $http.post(serviceBase + 'api/users', registerModel)
@@ -27,15 +41,15 @@
                     },
         banUser: function(userId)
                     {
-                        
+                        return $http.put(serviceBase + 'api/banUser/' + userId + '/1')
                     },
         unbanUser: function(userId)
                     {
-                        
+                        return $http.put(serviceBase + 'api/banUser/' + userId + '/0')
                     },
         makeAdmin: function(userId)
                     {
-                        
+                        return $http.put(serviceBase + 'api/makeAdmin/' + userId)
                     },
         getBooks: function()
                     {
