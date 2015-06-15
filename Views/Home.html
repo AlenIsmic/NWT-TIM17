@@ -1,20 +1,51 @@
 <div ng-controller="HomeCtrl" class="sub-view">
     <h2>What's new on the shelves</h2>
     <div class="row">
-        <div class="col-xs-6 col-lg-4">
-              <h2>Heading</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
-        </div>
-        <div class="col-xs-6 col-lg-4">
-              <h2>Heading</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
-        </div>
-        <div class="col-xs-6 col-lg-4">
-              <h2>Heading</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+        <div class="col-xs-6 col-lg-4 homepage-books" ng-repeat="selectedBook in selectedBooks">
+            <h2 class="homepage-book-titles">{{selectedBook.title}}</h2>
+            <span ng-show="isLoggedAdmin" class="glyphicon glyphicon-edit" ng-click="openChangeHomepage(selectedBook.id)"></span>
+            <p>{{selectedBook.summary}}</p>
+            <p><a class="btn btn-default" ng-click="showBookDetail($index)" role="button">View details »</a></p>
         </div>
     </div>
+
+<div id="showOtherBooks" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <select name="selectedBookId" ng-model="selectedBookId">
+                        <option value="">Select book to add</option>
+                        <option ng-repeat="book in booksToSelect" value="{{book.id}}">{{book.title}}</option>
+                    </select>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" ng-click="changeHomepageConfirm(selectedBookId)">Replace</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+        </div>
+</div>
+    
+<div id="showHomepageBookDetailModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <span>{{selectedBook.title}}</span>
+                    <hr>
+                <span>
+                    {{selectedBook.summary}}
+                </span><br><br>
+                    <div style="text-align: right;">
+                        <span>
+                            <b> {{selectedBook.price}} KM</b>
+                        </span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
 </div>

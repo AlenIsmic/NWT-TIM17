@@ -5,11 +5,10 @@ app.controller("BooksCtrl", ['$scope', 'BookStoreService',
 
             $scope.alerts = [ ];
             $scope.orderAlerts = [];
-
             $scope.reviewAlerts = [ ];
 
             BookStoreService.getBooks().then(function (data){
-                $scope.books = data.data;               
+                $scope.books = data.data;  
             });
 
             $scope.showBookDetail = function(ind){

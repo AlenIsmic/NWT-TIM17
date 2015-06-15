@@ -1,14 +1,16 @@
-<div ng-controller="BooksCtrl" class="sub-view">
+<div ng-controller="BooksCtrl">
     <div id="mainmenu">
         <ul>
             <li><input type="text" ng-model="titleFilter" placeholder="Search book by title"></li>
-            <li class="pull-right"><button class="btn-link" ng-click="addBook()">Add new book</button></li>
+            <li class="pull-right">
+                <button class="btn-success" ng-click="addBook()" ng-value="Add new book">Add new book</button>                
+            </li>
         </ul>
     </div>
     <div>
         <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
     </div>
-    <div class="row">
+    <div class="row sub-view">
         <div class="col-xs-6 col-lg-4 round-corners"  ng-repeat="b in books | filter: titleFilter">
             <h2 class="book-title">{{b.title}}</h2>
             <p class="book-summary">{{b.summary}}</p>

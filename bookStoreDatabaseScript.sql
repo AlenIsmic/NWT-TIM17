@@ -56,6 +56,7 @@ CREATE TABLE IF NOT EXISTS `tbl_book` (
   `summary` text,
   `price` double NOT NULL,
   `available` int(11) DEFAULT NULL,
+  `isOnHomepage` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `unique_id` (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
@@ -132,6 +133,7 @@ CREATE TABLE IF NOT EXISTS `tbl_user` (
   `admin` int(11) DEFAULT NULL,
   `isVerified` tinyint(1) NOT NULL,
   `password` varchar(30) NOT NULL,
+  `isUserBanned` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `unique_id` (`id`),
   UNIQUE KEY `email_UNIQUE` (`email`)
@@ -141,9 +143,9 @@ CREATE TABLE IF NOT EXISTS `tbl_user` (
 -- Dumping data for table `tbl_user`
 --
 
-INSERT INTO `tbl_user` (`id`, `name`, `email`, `admin`, `isVerified`, `password`) VALUES
-(1, 'ime', 'mail', NULL, 0, 'psw'),
-(2, '', '', NULL, 0, '');
+INSERT INTO `tbl_user` (`id`, `name`, `email`, `admin`, `isVerified`, `password`, `isUserBanned`) VALUES
+(1, 'ime', 'mail', NULL, 0, 'psw', 0),
+(2, '', '', NULL, 0, '', 1);
 
 -- --------------------------------------------------------
 

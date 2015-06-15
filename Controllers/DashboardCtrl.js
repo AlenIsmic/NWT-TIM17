@@ -1,4 +1,3 @@
-
 'use strict';
 app.controller("DashboardCtrl", ['$scope', 'BookStoreService',
     function($scope, BookStoreService){
@@ -12,6 +11,12 @@ app.controller("DashboardCtrl", ['$scope', 'BookStoreService',
 
          $scope.labels = ["Drama", "Thriller", "Comedy", "Education"];
          $scope.data = [bookNumber.Drama, bookNumber.Thriller, bookNumber.Comedy, bookNumber.Education];
+         });
+         
+         BookStoreService.getBookNumberByPrice().then(function(data){
+            var sortedBooks = data.data;
+            $scope.priceLabels = ["Cheap", "Medium", "Expensive"];
+            $scope.priceData = [sortedBooks.Cheap, sortedBooks.Medium, sortedBooks.Expensive];
          });
 
         $scope.topBooks = ["Game Of Thrones", "Book OF RA", "Some Book", "Other"];

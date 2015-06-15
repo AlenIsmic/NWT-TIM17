@@ -7,33 +7,72 @@
     return {
         login: function(username, password)
                     {
-                        //TODO : call API controller to find the user in the db
-                        return $http.post(serviceBase + 'api/login/', username, password);
+                        return $http.get(serviceBase + 'api/login/'+username+'/'+password);
                     },
+        checkIfAdmin : function(username)
+                    {
+                        return $http.get(serviceBase + 'api/getLoggedUser/' + username);
+                    },
+        checkIfUserExists: function(username)
+                    {
+                        return $http.get(serviceBase + 'api/checkIfExists/' + username);
+                    },
+        createUser: function(registerModel)
+                    {
+                        return $http.post(serviceBase + 'api/users', registerModel)
+                            .success(function () {
+                                
+                            })
+                            .error(function(){
+                                
+                            });
+                    },                    
         sendRegistrationRequest: function(registerModel)
                     {
-                        return $http({
-                            method : 'POST',
-                            url : serviceBase + 'api/users',
-                            data : registerModel
-                        }).success(function(){
-                            $http.post('/mail', registerModel.email);
-                            
-                        }).error(function(){
-                            alert("Greška u procesiranju zahtjeva");
-                        });
+                        return $http.post(serviceBase + 'api/users', registerModel)
+                                .success(function () {
+                                })
+                                .error(function(){
+                                });
+                    },
+        getUsers: function()
+                    {
+                        return $http.get(serviceBase + 'api/users');
+                    },
+        banUser: function(userId)
+                    {
+                        return $http.put(serviceBase + 'api/banUser/' + userId + '/1')
+                    },
+        unbanUser: function(userId)
+                    {
+                        return $http.put(serviceBase + 'api/banUser/' + userId + '/0')
+                    },
+        makeAdmin: function(userId)
+                    {
+                        return $http.put(serviceBase + 'api/makeAdmin/' + userId)
                     },
         getBooks: function()
                     {
-                        filteredBooks = [];
                         return $http.get(serviceBase + 'api/books');
+                    },
+        getBooksHomepage: function()
+                    {
+                        return $http.get(serviceBase + 'api/getHomepageBooks');
+                    },
+        updateHomepage: function(oldId, newId)
+                    {
+                        return $http.put(serviceBase + 'api/setHomepageBook/' + oldId + '/' + newId);
                     },
         addBooksByAuthor: function(addBookModel)
                     {
-                        return $http.post(serviceBase + 'api/books', {model: addBookModel})
+                        return $http.post(serviceBase + 'api/books', addBookModel)
                                 .error(function(){
                                     alert("Adding new book failed!");
                         });
+                    },
+        getBookById: function(bookIndex)
+                    {
+                        return $http.get(serviceBase + 'api/books/'+bookIndex);         
                     },
         getAuthors: function()
                     {
@@ -43,12 +82,10 @@
         {
             return $http.post(serviceBase + 'api/authors', createAuthorModel)
                 .success(function () {
-
                     //show ui.bootstrap.alert success message
                     alerts.push({type:'success', msg: 'New author successfully created!'});
                 })
                 .error(function(){
-
                     //show ui.bootstrap.alert danger message
                     alerts.push({type:'danger', msg: 'Failed when trying to add new author !'});
                 });
@@ -92,10 +129,9 @@
                     reviewAlerts.push({type:'danger', msg: 'Add new Review failed ! Please try again.'});
                 });
         },
-        filterBooksByAuthor: function(ind)
+        getBooksAndAuthors: function(authorID)
                     {
-                        //get books by authorID
-                        filteredBooks = $http.get(serviceBase + 'api/booksAuthors/');
+                        return $http.get(serviceBase + 'api/getBooksForAuthor/' + authorID);
                     },
         getFilteredBooks : function()
                     {
@@ -129,6 +165,13 @@
             return $http.get(serviceBase + 'api/statistics/book/genre')
                 .error(function(){
                     alert("getBookNumberByGenre failed!");
+                });
+        },
+        getBookNumberByPrice: function()
+        {
+            return $http.get(serviceBase + 'api/statistics/book/price')
+                .error(function(){
+                    alert("Something went wrong!");
                 });
         }
     };

@@ -38,36 +38,25 @@ app.controller("AuthorsCtrl", ['$scope', '$http', 'BookStoreService',
                 //call service that will get author's books and redirect to books view and show filtered books
                 var authorId = $scope.authors[ind].id;
                 $scope.authorsBooksCon = [];
-                BookStoreService.getBooks().then(function(data){
-                    for(var i = 0; i < data.data.length; i++)
-                        if(data.data[i].author === authorId)
-                            $scope.authorsBooksCon.push(data.data[i]);
-                
-                if($scope.authorsBooksCon.length !== 0)
-                {
-                    $scope.detailedAuthorBooks = {};
-                    $scope.detailedAuthorBooks.name = $scope.authors[ind].name;
-                    $scope.detailedAuthorBooks.books = [];
-                    for(var j = 0; j < $scope.authorsBooksCon.length; j++)
+                BookStoreService.getBooksAndAuthors(authorId).then(function(data){
+                    $scope.authorsBooksCon = data.data;
+                    $scope.selectedAuthorName = $scope.authors[ind].name;
+//                
+                    if($scope.authorsBooksCon.length !== 0)
                     {
-                        BookStoreService.getBookById($scope.authorsBooksCon[j].book).then(function(another_data){
-                            $scope.detailedAuthorBooks.books.push(another_data.data); 
-                        });
+                        $("#showAuthorBooksModal").modal("show");
                     }
-                
-                    $("#showAuthorBooksModal").modal("show");
-                }
-                else
-                    alert("Cannot find books matching the selected author !");
-            });     
-                
+                    else
+                        alert("Cannot find books matching the selected author !");
+                });
             };
             
             $scope.addNewBookForAuthor = function(ind){
-              //open up modal for adding new book, allow user to go to filtered books view 
               $scope.addBookAuthorInd = ind;
               $scope.addBookModel = {
-                  available: true
+                  available: true,
+                  isOnHomepage: "0",
+                  author: $scope.authors[ind].id
               };
               $("#addBookByAuthorModal").modal('show');
             };

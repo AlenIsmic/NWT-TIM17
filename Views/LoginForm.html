@@ -1,13 +1,26 @@
 
-<div ng-controller="LoginCtrl" class="container-fluid">
-    <table class="table login-form">
+<div ng-controller="mainController" class="container-fluid login-form">
+    <div>
+        <alert ng-repeat="alert in mainAlerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+    </div>
+    <table class="table">
         <tr>
-            <th>Unesi korisničko ime:</th>
-            <td> <input type="text" ng-model="loginModel.loginUsername"></td>
+            <th>Enter username </th>
+            <td>
+                <div class="inner-addon left-addon">
+                    <i class="glyphicon glyphicon-user"></i>      
+                    <input type="text" class="form-control" ng-model="loginModel.loginUsername" required>
+                </div>
+            </td>
         </tr>
         <tr>
-            <th>Unesi password:</th>
-            <td><input type="password" ng-model="loginModel.loginPsw"></td>
+            <th>Enter password </th>
+            <td>
+                <div class="inner-addon left-addon">
+                    <i class="glyphicon glyphicon-asterisk"></i>      
+                    <input type="password" class="form-control" ng-model="loginModel.loginPsw" required>
+                </div>
+            </td>
         </tr>
         <tr>
             <td></td>
